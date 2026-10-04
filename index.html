@@ -15,15 +15,13 @@
         .section-title { position: relative; display: inline-block; padding-bottom: 12px; margin-top: 40px; border-bottom: none; }
         .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background-color: var(--accent-teal); }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { display: flex; align-items: center; justify-content: space-between; padding: 80px 60px; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); min-height: 500px; }
-        .hero-content { flex: 1; max-width: 600px; }
-        #hero-name { font-size: 4rem; margin-bottom: 15px; cursor: pointer; line-height: 1.2; }
-        #phd-title { font-size: 1.8rem; color: var(--text-yellow); margin-bottom: 25px; cursor: pointer; }
-        .bio { font-size: 1.2rem; line-height: 1.8; margin-bottom: 35px; color: var(--text-secondary); }
-        .contact-info { font-size: 1rem; line-height: 2; }
+        header { text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); }
+        #hero-name { font-size: 3rem; margin-bottom: 10px; cursor: pointer; }
+        #phd-title { font-size: 1.5rem; color: var(--text-yellow); margin-bottom: 20px; cursor: pointer; }
+        .bio { font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 30px; color: var(--text-secondary); }
+        .contact-info { margin-bottom: 30px; font-size: 0.9rem; }
         .contact-info a { color: var(--text-secondary); text-decoration: none; }
-        .hero-image { flex-shrink: 0; margin-left: 60px; }
-        #profile-photo { width: 280px; height: 280px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent-teal); box-shadow: 0 0 30px rgba(69, 196, 190, 0.4); transition: all 0.3s ease; }
+        #profile-photo { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-teal); box-shadow: 0 0 20px rgba(69, 196, 190, 0.3); transition: all 0.3s ease; }
         #profile-photo:hover { box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 0 60px rgba(69, 196, 190, 0.4); transform: scale(1.05); }
         .timeline-item { position: relative; padding-left: 30px; border-left: 2px solid var(--accent-teal); margin-bottom: 30px; }
         .timeline-item::before { content: ''; position: absolute; left: -8px; top: 0; width: 14px; height: 14px; border-radius: 50%; background-color: var(--accent-teal); border: 3px solid var(--bg-dark); }
@@ -56,17 +54,7 @@
         @keyframes wave-hand { 0% { transform: translateY(-50%) rotate(0deg); } 100% { transform: translateY(-50%) rotate(20deg); } }
         html { scroll-behavior: smooth; }
         .mobile-menu { display: none; }
-        @media (max-width: 768px) { 
-            .mobile-menu { display: block; } 
-            .desktop-menu { display: none; }
-            header { flex-direction: column-reverse; padding: 40px 20px; text-align: center; }
-            .hero-content { max-width: 100%; margin-top: 30px; }
-            .hero-image { margin-left: 0; margin-bottom: 20px; }
-            #profile-photo { width: 200px; height: 200px; }
-            #hero-name { font-size: 2.5rem; }
-            #phd-title { font-size: 1.3rem; }
-            .bio { font-size: 1rem; }
-        }
+        @media (max-width: 768px) { .mobile-menu { display: block; } .desktop-menu { display: none; } }
         footer { text-align: center; padding: 40px; margin-top: 60px; border-top: 1px solid #333; color: var(--text-secondary); }
         iframe { width: 100%; border: none; min-height: 400px; }
     </style>
@@ -75,23 +63,19 @@
 
 <header id="home">
     <div class="container">
-        <div class="hero-content">
-            <span class="name-emoji">👋</span>
-            <h1 id="hero-name">Yuxun Wang</h1>
-            <div id="phd-title">PhD Applicant in Anthropology<span class="title-emoji museum">🏛️</span><span class="title-emoji book">📚</span></div>
-            
-            <p class="bio">A scholar and curator whose research and practice focus on Anthropology, heritage studies, and community-based curatorial practices in museum contexts.</p>
-            
-            <div class="contact-info">
-                <a href="mailto:kacowang@outlook.com">kacowang@outlook.com</a> | 
-                +86 13372009544 | 
-                No. 74, Beijing West Road, Gulou, Nanjing, Jiangsu Province, China
-            </div>
+        <span class="name-emoji">👋</span>
+        <h1 id="hero-name">Yuxun Wang</h1>
+        <div id="phd-title">PhD Applicant in Anthropology<span class="title-emoji museum">🏛️</span><span class="title-emoji book">📚</span></div>
+        
+        <p class="bio">A scholar and curator whose research and practice focus on Anthropology, heritage studies, and community-based curatorial practices in museum contexts.</p>
+        
+        <div class="contact-info">
+            <a href="mailto:kacowang@outlook.com">kacowang@outlook.com</a> | 
+            +86 13372009544 | 
+            No. 74, Beijing West Road, Gulou, Nanjing, Jiangsu Province, China
         </div>
         
-        <div class="hero-image">
-            <img id="profile-photo" src="https://valoriaaaa.github.io/photo_hero.jpg" alt="Yuxun Wang">
-        </div>
+        <img id="profile-photo" src="https://valoriaaaa.github.io/photo_hero.jpg" alt="Yuxun Wang">
     </div>
 </header>
 
