@@ -4,549 +4,1438 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yuxun Wang - PhD Applicant in Anthropology</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-blue: #4b5cc4; --bg-cream: #0a0a0a; --text-yellow: #fed81f; --accent-teal: #45C4BE; --bg-dark: #000000; --bg-card: #1a1a1a; --bg-card-hover: #242424; --text-primary: #ffffff; --text-secondary: #cccccc; }
-        body { font-family: 'Times New Roman', Times, serif; background-color: var(--bg-dark); color: var(--text-primary); margin: 0; padding: 0; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Times New Roman', Times, serif; }
-        .nav-link { transition: all 0.3s ease; position: relative; display: inline-block; margin-right: 15px; text-decoration: none; color: var(--text-primary); }
-        .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background-color: var(--text-yellow); transition: width 0.3s ease; }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-        .nav-link.active { color: var(--text-yellow); }
-        .section-title { position: relative; display: inline-block; padding-bottom: 12px; margin-top: 40px; border-bottom: none; }
-        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background-color: var(--accent-teal); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); }
-        #hero-name { font-size: 3rem; margin-bottom: 10px; cursor: pointer; }
-        #phd-title { font-size: 1.5rem; color: var(--text-yellow); margin-bottom: 20px; cursor: pointer; }
-        .bio { font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 30px; color: var(--text-secondary); }
-        .contact-info { margin-bottom: 30px; font-size: 0.9rem; }
-        .contact-info a { color: var(--text-secondary); text-decoration: none; }
-        #profile-photo { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-teal); box-shadow: 0 0 20px rgba(69, 196, 190, 0.3); transition: all 0.3s ease; }
-        #profile-photo:hover { box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 0 60px rgba(69, 196, 190, 0.4); transform: scale(1.05); }
-        .timeline-item { position: relative; padding-left: 30px; border-left: 2px solid var(--accent-teal); margin-bottom: 30px; }
-        .timeline-item::before { content: ''; position: absolute; left: -8px; top: 0; width: 14px; height: 14px; border-radius: 50%; background-color: var(--accent-teal); border: 3px solid var(--bg-dark); }
-        .card { background: var(--bg-card); border: 1px solid #2a2a2a; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; overflow: hidden; margin-bottom: 20px; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(69, 196, 190, 0.15); background: var(--bg-card-hover); border-color: #333; }
-        .card-content { padding: 20px; }
-        .btn-primary { background-color: var(--primary-blue); color: white; padding: 10px 24px; border-radius: 6px; transition: all 0.3s ease; display: inline-block; text-decoration: none; margin-top: 10px; }
-        .btn-primary:hover { background-color: var(--accent-teal); transform: translateY(-2px); }
-        #backToTop { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background-color: var(--primary-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1000; box-shadow: 0 4px 12px rgba(75, 92, 196, 0.4); }
-        #backToTop.visible { opacity: 1; visibility: visible; }
-        #backToTop:hover { background-color: var(--accent-teal); transform: translateY(-3px); }
-        .placeholder-img { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px dashed #555; display: flex; align-items: center; justify-content: center; color: #888; font-style: italic; padding: 40px; margin: 10px 0; }
-        .painting-masonry { column-count: 4; column-gap: 12px; }
-        @media (max-width: 1024px) { .painting-masonry { column-count: 3; } }
-        @media (max-width: 640px) { .painting-masonry { column-count: 2; } }
-        .painting-masonry img { width: 100%; height: auto; display: block; margin-bottom: 12px; border-radius: 8px; border: 1px solid #2a2a2a; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .painting-masonry img:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(69, 196, 190, 0.2); z-index: 1; position: relative; }
-        .lightbox-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0, 0, 0, 0.92); align-items: center; justify-content: center; cursor: pointer; }
-        .lightbox-overlay.active { display: flex; }
-        .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 0 40px rgba(0,0,0,0.6); }
-        .lightbox-close { position: fixed; top: 20px; right: 28px; z-index: 10000; color: #fff; font-size: 2rem; cursor: pointer; background: none; border: none; line-height: 1; }
-        .sparkle { position: absolute; font-size: 24px; pointer-events: none; animation: sparkle-fly 1s ease-out forwards; z-index: 100; }
-        @keyframes sparkle-fly { 0% { opacity: 1; transform: translate(0, 0) scale(0) rotate(0deg); } 50% { opacity: 1; transform: translate(var(--tx), var(--ty)) scale(1) rotate(180deg); } 100% { opacity: 0; transform: translate(calc(var(--tx) * 2), calc(var(--ty) * 2)) scale(0.5) rotate(360deg); } }
-        .title-emoji { position: absolute; font-size: 28px; pointer-events: none; opacity: 0; transition: all 0.4s ease; right: -60px; }
-        .title-emoji.museum { top: -10px; transition-delay: 0s; }
-        .title-emoji.book { bottom: -10px; transition-delay: 0.1s; }
-        #phd-title:hover .title-emoji { opacity: 1; right: -50px; }
-        .name-emoji { position: absolute; font-size: 40px; pointer-events: none; opacity: 0; transition: all 0.4s ease; right: -60px; top: 50%; transform: translateY(-50%); }
-        #hero-name:hover .name-emoji { opacity: 1; right: -55px; animation: wave-hand 0.6s ease-in-out infinite alternate; }
-        @keyframes wave-hand { 0% { transform: translateY(-50%) rotate(0deg); } 100% { transform: translateY(-50%) rotate(20deg); } }
-        html { scroll-behavior: smooth; }
-        .mobile-menu { display: none; }
-        @media (max-width: 768px) { .mobile-menu { display: block; } .desktop-menu { display: none; } }
-        footer { text-align: center; padding: 40px; margin-top: 60px; border-top: 1px solid #333; color: var(--text-secondary); }
-        iframe { width: 100%; border: none; min-height: 400px; }
+        :root {
+            --primary-blue: #4b5cc4;
+            --bg-cream: #0a0a0a;
+            --text-yellow: #fed81f;
+            --accent-teal: #45C4BE;
+            --bg-dark: #000000;
+            --bg-card: #1a1a1a;
+            --bg-card-hover: #242424;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--text-yellow);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--text-yellow);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-teal);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid var(--accent-teal);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--accent-teal);
+            border: 3px solid var(--bg-dark);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 16px;
+            margin: 4px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background-color: var(--accent-teal);
+            transform: translateY(-2px);
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(69, 196, 190, 0.15);
+            background: var(--bg-card-hover);
+            border-color: #333;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-teal);
+            transform: translateY(-2px);
+        }
+
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(75, 92, 196, 0.4);
+        }
+
+        #backToTop.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #backToTop:hover {
+            background-color: var(--accent-teal);
+            transform: translateY(-3px);
+        }
+
+        .placeholder-img {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 2px dashed #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-style: italic;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            .desktop-menu {
+                display: none;
+            }
+        }
+
+        .pdf-container {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .exhibition-container {
+            width: 100%;
+            height: 450px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+        }
+
+        .painting-masonry {
+            column-count: 4;
+            column-gap: 12px;
+        }
+        @media (max-width: 1024px) {
+            .painting-masonry { column-count: 3; }
+        }
+        @media (max-width: 640px) {
+            .painting-masonry { column-count: 2; }
+        }
+        .painting-masonry img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .painting-masonry img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(69, 196, 190, 0.2);
+            z-index: 1;
+            position: relative;
+        }
+
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.92);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .lightbox-overlay.active {
+            display: flex;
+        }
+        .lightbox-overlay img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.6);
+        }
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 28px;
+            z-index: 10000;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+
+        #profile-photo {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        #profile-photo:hover {
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 0 60px rgba(69, 196, 190, 0.4);
+            transform: scale(1.05);
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 24px;
+            pointer-events: none;
+            animation: sparkle-fly 1s ease-out forwards;
+            z-index: 100;
+        }
+
+        @keyframes sparkle-fly {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(var(--tx), var(--ty)) scale(1) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(calc(var(--tx) * 2), calc(var(--ty) * 2)) scale(0.5) rotate(360deg);
+            }
+        }
+
+        #phd-title {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #phd-title:hover {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .title-emoji {
+            position: absolute;
+            font-size: 28px;
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.4s ease;
+            right: -60px;
+        }
+
+        .title-emoji.museum {
+            top: -10px;
+            transition-delay: 0s;
+        }
+
+        .title-emoji.book {
+            bottom: -10px;
+            transition-delay: 0.1s;
+        }
+
+        #phd-title:hover .title-emoji {
+            opacity: 1;
+            right: -50px;
+        }
+
+        #hero-name {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .name-emoji {
+            position: absolute;
+            font-size: 40px;
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.4s ease;
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #hero-name:hover .name-emoji {
+            opacity: 1;
+            right: -55px;
+            animation: wave-hand 0.6s ease-in-out infinite alternate;
+        }
+
+        @keyframes wave-hand {
+            0% { transform: translateY(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(20deg); }
+        }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-<header id="home">
-    <div class="container">
-        <span class="name-emoji">👋</span>
-        <h1 id="hero-name">Yuxun Wang</h1>
-        <div id="phd-title">PhD Applicant in Anthropology<span class="title-emoji museum">🏛️</span><span class="title-emoji book">📚</span></div>
-        
-        <p class="bio">A scholar and curator whose research and practice focus on Anthropology, heritage studies, and community-based curatorial practices in museum contexts.</p>
-        
-        <div class="contact-info">
-            <a href="mailto:kacowang@outlook.com">kacowang@outlook.com</a> | 
-            +86 13372009544 | 
-            No. 74, Beijing West Road, Gulou, Nanjing, Jiangsu Province, China
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50" style="background-color: var(--primary-blue); font-family: 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; font-weight: 700;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="max-width: calc(80rem - 2cm);">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 h-16 flex items-center" style="background-color: var(--bg-dark); padding: 0 1rem; margin-left: -1rem;">
+                    <a href="#home" class="text-yellow-300 font-bold text-xl" style="font-family: 'Playfair Display', serif;">Yuxun Wang</a>
+                </div>
+                
+                <div class="desktop-menu hidden md:flex items-center space-x-6">
+                    <a href="#education" class="nav-link text-white hover:text-yellow-300 px-3 text-sm font-medium">Education</a>
+                    <a href="#research-interests" class="nav-link text-white hover:text-yellow-300 px-3 text-sm font-medium">Research Interests</a>
+                    <a href="#doctoral-research" class="nav-link text-white hover:text-yellow-300 px-3 text-sm font-medium">Doctoral Agenda</a>
+                    <a href="#publications" class="nav-link text-white hover:text-yellow-300 px-3 text-sm font-medium">Publications</a>
+                    <a href="#research-experience" class="nav-link text-white hover:text-yellow-300 px-3 text-sm font-medium">Research Experience</a>
+                    <a href="#curatorial" class="nav-link text-white hover:text-yellow-300 px-3 text-sm font-medium">Curatorial</a>
+                    <a href="#awards" class="nav-link text-white hover:text-yellow-300 px-3 text-sm font-medium">Awards</a>
+                    <a href="#professional" class="nav-link text-white hover:text-yellow-300 px-3 text-sm font-medium">Professional</a>
+                    <a href="#volunteer" class="nav-link text-white hover:text-yellow-300 px-3 text-sm font-medium">Volunteer</a>
+                    <a href="#skills" class="nav-link text-white hover:text-yellow-300 px-3 text-sm font-medium">Skills</a>
+                </div>
+
+                <div class="mobile-menu md:hidden">
+                    <button id="mobileMenuBtn" class="text-white hover:text-yellow-300 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobileMenu" class="mobile-menu hidden md:hidden pb-4">
+                <a href="#education" class="block text-white hover:text-yellow-300 px-3 py-2 text-base font-medium">Education</a>
+                <a href="#research-interests" class="block text-white hover:text-yellow-300 px-3 py-2 text-base font-medium">Research Interests</a>
+                <a href="#doctoral-research" class="block text-white hover:text-yellow-300 px-3 py-2 text-base font-medium">Doctoral Agenda</a>
+                <a href="#publications" class="block text-white hover:text-yellow-300 px-3 py-2 text-base font-medium">Publications</a>
+                <a href="#research-experience" class="block text-white hover:text-yellow-300 px-3 py-2 text-base font-medium">Research Experience</a>
+                <a href="#curatorial" class="block text-white hover:text-yellow-300 px-3 py-2 text-base font-medium">Curatorial</a>
+                <a href="#awards" class="block text-white hover:text-yellow-300 px-3 py-2 text-base font-medium">Awards</a>
+                <a href="#professional" class="block text-white hover:text-yellow-300 px-3 py-2 text-base font-medium">Professional</a>
+                <a href="#volunteer" class="block text-white hover:text-yellow-300 px-3 py-2 text-base font-medium">Volunteer</a>
+                <a href="#skills" class="block text-white hover:text-yellow-300 px-3 py-2 text-base font-medium">Skills</a>
+            </div>
         </div>
-        
-        <img id="profile-photo" src="https://valoriaaaa.github.io/photo_hero.jpg" alt="Yuxun Wang">
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient min-h-screen flex items-center justify-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20" style="max-width: calc(80rem - 2cm);">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h1 id="hero-name" class="text-5xl md:text-6xl font-bold mb-4" style="font-family: 'Times New Roman', Times, serif;">Yuxun Wang<span class="name-emoji wave">👋</span></h1>
+                    <p id="phd-title" class="text-2xl md:text-3xl mb-6" style="color: var(--text-yellow);">PhD Applicant in Anthropology<span class="title-emoji museum">🏛️</span><span class="title-emoji book">📚</span></p>
+                    <p class="text-lg mb-8 opacity-90">
+                        A scholar and curator whose research and practice focus on Anthropology, heritage studies, and community-based curatorial practices in museum contexts.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                            <a href="mailto:kacowang@outlook.com" class="hover:text-yellow-300 transition">kacowang@outlook.com</a>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                            </svg>
+                            <span>+86 13372009544</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>No. 74, Beijing West Road, Gulou, Nanjing, Jiangsu Province, China</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <img id="profile-photo" src="https://valoriaaaa.github.io/photo_hero.jpg" alt="Yuxun Wang" class="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-white shadow-2xl object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="max-width: calc(80rem - 2cm);">
+            <h2 class="section-title text-4xl font-bold mb-12" style="color: var(--accent-teal);">Education</h2>
+
+            <div class="space-y-8">
+                <div class="timeline-item pb-8">
+                    <div class="card p-6">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2" style="color: var(--accent-teal);">Nanjing University of the Arts, China</h3>
+                                <p class="text-lg font-semibold text-gray-200">Bachelor of Arts in Cultural Heritage Science</p>
+                                <p class="text-gray-400">Minor: Fine Arts (Cultural Heritage Science)</p>
+                            </div>
+                            <div class="mt-2 md:mt-0 text-right">
+                                <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold" style="background-color: var(--accent-teal); color: white;">
+                                    09/2022 – 06/2026
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <span class="font-semibold text-gray-200">GPA:</span>
+                            <span class="text-lg font-bold" style="color: var(--accent-teal);">88/100</span>
+                            <span class="ml-4 text-sm text-gray-400">(Top 10% in major ranking)</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2 text-gray-200">Key Undergraduate Courses:</h4>
+                            <div class="grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-300">
+                                <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Museum Management</span></div>
+                                <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Cultural Heritage Exhibition Planning</span></div>
+                                <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Cultural Heritage Exhibition Design</span></div>
+                                <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>History of Chinese Arts and Crafts</span></div>
+                                <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Cultural Arts Laws and Regulations</span></div>
+                                <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Ancient Chinese Architecture History</span></div>
+                                <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Cultural Heritage Conservation Materials</span></div>
+                                <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Art Archaeology</span></div>
+                                <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>History and Theory of Cultural Heritage Protection</span></div>
+                                <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Folklore</span></div>
+                                <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Field Research Methods</span></div>
+                                <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Field Survey Practice</span></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-700">
+                            <h4 class="text-lg font-semibold mb-2" style="color: var(--accent-teal);">Nanjing Folk Custom Museum and Nanjing Art Institute Cooperative Course</h4>
+                            <h4 class="text-base font-medium mb-4 text-gray-400">Nanjing University of the Arts &amp; Nanjing Folk Custom Museum</h4>
+
+                            <div class="mb-6">
+                                <h5 class="text-base font-semibold mb-2 text-gray-200">Course Content</h5>
+                                <div class="space-y-1.5 text-sm text-gray-300">
+                                    <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Master Class on Intangible Cultural Heritage (ICH) Craftsmanship Research and Inheritance</span></div>
+                                    <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Research on the Current Status of ICH Inheritance and Field Interviews</span></div>
+                                    <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Mechanism of Museum Operation and Practice of Study-Travel Programs</span></div>
+                                    <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Museum Public Services and Volunteer Practice</span></div>
+                                    <div class="flex items-start gap-1.5"><span class="text-gray-500 mt-0.5">•</span><span>Management and Leadership Studies of Cultural Heritage Institutions</span></div>
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <h5 class="text-base font-semibold mb-3 text-gray-200">My Reflections and Insights</h5>
+                                <div class="space-y-4 text-sm text-gray-300">
+                                    <div>
+                                        <h6 class="font-semibold mb-1" style="color: var(--accent-teal);">Architectural Preservation Challenges</h6>
+                                        <p class="leading-relaxed">As a cultural heritage site of historic residential architecture, the museum faces preservation challenges posed by the influx of large-scale study-travel participants.</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-semibold mb-1" style="color: var(--accent-teal);">ICH Transmission Dilemmas</h6>
+                                        <p class="leading-relaxed">Core intangible cultural heritage (ICH) craftsmanship is difficult to effectively transfer to younger study-travel groups through short-term programs. One-off experiential activities lack constructive value for both children's meaningful engagement and the sustainable development of ICH. Balancing the demand for recreational study-travel experiences with the need for in-depth ICH dissemination remains a long-term research topic.</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-semibold mb-1" style="color: var(--accent-teal);">Community-Museum Relationships</h6>
+                                        <p class="leading-relaxed">The dynamic between local communities and the museum requires further exploration; an equitable and mutually beneficial interactive mechanism should be established.</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-semibold mb-1" style="color: var(--accent-teal);">Institutional Management Reflections</h6>
+                                        <p class="leading-relaxed">The director's "governance through non-interference" approach embodies certain wisdom, yet it places excessively high demands on individual managerial competence. Thus, more stable and replicable management frameworks warrant exploration.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" style="grid-auto-rows: 12rem;">
+                                <img src="https://valoriaaaa.github.io/folk-museum-course1.jpg" alt="Nanjing Folk Custom Museum joint training course - paper-cut artwork" class="w-full h-full object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                                <img src="https://valoriaaaa.github.io/folk-museum-course2.jpg" alt="Nanjing Folk Custom Museum joint training course - volunteers teaching children" class="w-full h-full object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                                <img src="https://valoriaaaa.github.io/folk-museum-course3.jpg" alt="Nanjing Folk Custom Museum joint training course - embroidery work" class="w-full h-full object-contain rounded-lg row-span-2" style="border: 1px solid var(--border-color);">
+                                <img src="https://valoriaaaa.github.io/folk-museum-course4.jpg" alt="Nanjing Folk Custom Museum joint training course - face painting drawings" class="w-full h-full object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                                <img src="https://valoriaaaa.github.io/folk-museum-course5.jpg" alt="Nanjing Folk Custom Museum joint training course - museum garden" class="w-full h-full object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Interests Section -->
+    <section id="research-interests" class="pt-20 pb-4" style="background-color: var(--bg-dark);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="max-width: calc(80rem - 2cm);">
+            <h2 class="section-title text-4xl font-bold mb-12" style="color: var(--accent-teal);">Research Interests</h2>
+
+            <div class="card p-8">
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-200">Keywords</h3>
+                    <div class="flex flex-wrap">
+                        <span class="tag">Cultural Anthropology</span>
+                        <span class="tag">Digitization of Community Archives</span>
+                        <span class="tag">Digitization of Cultural Heritage</span>
+                        <span class="tag">Heritage Studies</span>
+                        <span class="tag">Community Engagement in Archiving</span>
+                        <span class="tag">Museology</span>
+                        <span class="tag">Museum Curation</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-200">Description</h3>
+                    <p class="text-lg leading-relaxed text-gray-300">
+                        My research interests are anchored in three interconnected domains: Cultural Anthropology, heritage studies, and museology. In the field of cultural anthropology, I am particularly concerned with identity formation and role categorization among participants, administrators, and community residents in museums and heritage sites, as well as the ways in which different roles influence culture within these cultural heritage sites or cultural institutions, and what underlying power dynamics are at play. In heritage studies, I examine the politics of intangible cultural heritage (ICH) documentation and how community-led conservation practices challenge top-down, state-centric models of heritage designation. In museology, I conceptualize curatorial practice as a mediating form of knowledge production, analyzing how exhibition design, object classification systems, and interpretive frameworks encode institutional power relations within cultural institutions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctoral Research Agenda Section -->
+    <section id="doctoral-research" class="pt-4 pb-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="max-width: calc(80rem - 2cm);">
+            <h2 class="section-title text-4xl font-bold mb-12" style="color: var(--accent-teal);">Doctoral Research Agenda</h2>
+
+            <div class="card p-8">
+                <h3 class="text-2xl font-bold mb-8 text-gray-200 italic leading-snug">
+                    The Metadatafication of Oral History in Participatory Interpretation: A Study on Museum Selection, Description, and Representation Mechanisms
+                </h3>
+
+                <div class="mb-8">
+                    <h4 class="text-xl font-semibold mb-3" style="color: var(--accent-teal);">Core Questions</h4>
+                    <p class="text-lg leading-relaxed text-gray-300">
+                        This study examines participatory interpretation initiatives in museums situated within place-based communities, with oral history serving as the primary case study to represent community voices. The central inquiry concerns the museum's curation of oral narratives contributed by both residents and visitors. Specifically, it investigates the mechanisms through which community voices are mediated, filtered, or modified within institutional archives.
+                    </p>
+                </div>
+
+                <div>
+                    <p class="text-lg leading-relaxed text-gray-300 mb-4">
+                        The research addresses three key questions:
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 text-lg text-gray-300">
+                        <li>What elements of oral history are subject to selection or alteration?</li>
+                        <li>Why are these interventions undertaken?</li>
+                        <li>How do various structural factors and stakeholder dynamics shape this process?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="max-width: calc(80rem - 2cm);">
+            <h2 class="section-title text-4xl font-bold mb-12" style="color: var(--accent-teal);">Publications</h2>
+            
+            <div class="space-y-8">
+                <!-- Paper 1 -->
+                <div class="card p-8">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold mb-3" style="color: var(--accent-teal);">
+                            Exploration of Cultural Heritage Interpretation Pathways from the Perspective of Participatory Development Theory — A Case Study of Nanjing's "Digital Heritage" Project
+                        </h3>
+                        <div class="flex flex-wrap gap-4 text-sm text-gray-400 mb-4">
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                                </svg>
+                                <strong>Yuxun Wang</strong> (First Author)
+                            </span>
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                                </svg>
+                                2026 (Forthcoming)
+                            </span>
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                                </svg>
+                                3rd Forum on Cultural Heritage and Social Development, Zhejiang University
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <h4 class="font-semibold mb-2 text-lg text-gray-200">Abstract</h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            The introduction of innovative change in the interpretation practices in museums is essential in cultural heritage institutions to deliver the cultural heritage in an effective manner and fulfill the social value of cultural heritage. Another benefit of exploring new methods of heritage interpretation is that it not only responds to the needs of the public to be engaged in cultural activities but encourages new forms of interpretation. Basing on the outlook of the participatory development theory, the given study incorporates its main idea, the ability to turn the passive receivers into the active creators, in the examination of the cultural heritage interpretation routes. The research with the help of case analysis suggests a three-phase model of participatory interpretation, which presents a theoretically based and practically used framework of innovation of the cultural heritage interpretation techniques. The study targets the role of the multi-stakeholder intervention in supporting the shift of heritage interpretation towards sharing process rather than delivering outcomes. A hybrid approach of participatory inquiry and case study was taken, and an intensive two-year follow-up study of the project of Digital Heritage on the Nanjing Great Bao'en Temple Site Museum was performed. The results show that the participatory development theory offers a fundamental rationale of mutual interpretive engagements in cultural heritage which highlight the transition of closed functioning towards gradual openness to the populace as well as the maintenance of the quality of interpretation by moderate delegation of cultural authority. This method provides a radical model between theory and practice of innovation in heritage interpretation.
+                        </p>
+                    </div>
+
+                    <div class="mb-6">
+                        <h4 class="font-semibold mb-2 text-lg text-gray-200">Introduction</h4>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            I initiated research on this museum project in 2024, independently designing its research framework and methodology, which ultimately formed the basis of my undergraduate thesis. Over a two-year longitudinal study, I engaged in participant observation through three overlapping roles—contestant, curator, and event staff—while collecting extensive primary data via questionnaires and semi-structured in-depth interviews with audiences and internal personnel. This empirical evidence underpinned the development of my final interpretive model.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            This research systematically analyzes how multi-stakeholder engagement at distinct stages of museum object interpretation catalyzes the excavation of the objects' multi-layered meanings, and proposes a three-stage participatory interpretation model. The model posits that, within the context of cultural institutions (e.g., museums) retaining interpretive sovereignty, museum object interpretation remains a closed process for the public. This closure situates visitors in an "absent context" between the interpretive process and the exhibited display, leading to the erosion of partial cultural agency. To address this impasse, the model centers on the logic of shared interpretive processes, emphasizing a shift from closure to openness and from one-way transmission to community co-creation. It argues that diverse communities can intervene at different stages of the interpretive process, thereby mitigating the absent context.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed">
+                            This experience has solidified my commitment to advancing scholarship in museum anthropology. Doctoral studies will afford me the sustained, coherent timeframe necessary to systematically investigate the topics that both perplex and captivate me.
+                        </p>
+                    </div>
+
+                    <div class="mb-6">
+                        <h4 class="font-semibold mb-2 text-lg text-gray-200">Paper Structure</h4>
+                        <div style="width: 100%; max-height: 500px; overflow: hidden; border: 1px solid #333; border-radius: 8px;">
+                            <img src="https://valoriaaaa.github.io/Exploration%20of%20Cultural%20Heritage%20Interpretation%20Pathways.png" alt="Paper 1 structure diagram" style="width: 100%; height: auto; object-fit: contain; display: block;">
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2 text-lg text-gray-200">Key Outcomes</h4>
+                        <div style="display: flex; gap: 16px; max-height: 55vh; border: 1px solid #333; border-radius: 8px; background: #fff; overflow: hidden;">
+                            <div style="flex: 0 0 33%; display: flex; align-items: center; justify-content: center; padding: 8px; border-right: 1px solid #e0e0e0;">
+                                <img src="https://valoriaaaa.github.io/paper1-key-outcomes.jpg" alt="Paper 1 key outcomes diagram" style="max-width: 100%; max-height: 52vh; width: auto; height: auto; object-fit: contain;">
+                            </div>
+                            <div style="flex: 0 0 65%; overflow-y: auto; padding: 14px 16px; font-size: 12.5px; line-height: 1.65; color: #333;">
+                                <p style="margin-bottom: 10px;"><b>Dynamic Three-Stage Model for Cultural Heritage Interpretation</b></p>
+                                <p style="margin-bottom: 10px;">This study constructs a dynamic three-stage model for cultural heritage interpretation oriented toward <b>open cultural rights</b>. The theoretical model draws on two foundational frameworks:</p>
+                                <ul style="margin: 0 0 10px 16px; list-style: disc;">
+                                    <li><b>Jelka Pirković's General Model of Heritage Interpretation</b> — emphasizes the co-participation of memory, values, and knowledge as core drivers of interpretation.</li>
+                                    <li><b>Tolkach et al.'s Community-Centered Heritage Sustainability Model</b> — advocates for community-led sustainable heritage management enabled by multidimensional empowerment.</li>
+                                </ul>
+                                <p style="margin-bottom: 8px;">The model conceptualizes interpretation as an interpenetrating dynamic system of three interdependent stages:</p>
+                                <ol style="margin: 0 0 10px 16px; list-style: decimal;">
+                                    <li style="margin-bottom: 6px;"><b>Pre-interpretation:</b> Aggregation of interpretive resources mediated by the community — community actors curate and mobilize local heritage resources as the basis for interpretation.</li>
+                                    <li style="margin-bottom: 6px;"><b>In-interpretation:</b> Translation of interpretive materials by participants — participants recontextualize and transform heritage content into accessible, contextually relevant forms.</li>
+                                    <li style="margin-bottom: 6px;"><b>Post-interpretation:</b> Evaluation of interpretive outcomes by internal experts and external audiences — dual-stakeholder feedback validates the accuracy, relevance, and impact of interpretation.</li>
+                                </ol>
+                                <p style="margin-bottom: 8px;">These stages form a <b>closed-loop system</b> through empowerment mechanisms, driving continuous reconstruction and renewal of heritage meanings among diverse stakeholders.</p>
+                                <p style="margin-bottom: 8px;"><b>Empirical findings:</b> The model effectively enhances the public's emotional connection to heritage and cultivates a sense of ownership.</p>
+                                <p><b>Three key challenges:</b> (1) insufficient participation sustainability; (2) ambiguous boundaries of power devolution; (3) absence of long-term impact assessment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paper 2 -->
+                <div class="card p-8">
+                    <div class="mb-6">
+                        <div class="flex flex-col md:flex-row md:items-start gap-6 mb-3">
+                            <h3 class="text-2xl font-bold flex-1" style="color: var(--accent-teal);">
+                                Exploring Innovative Development Pathways for Small and Medium-Sized Museums from the Perspective of Youth Co-Creation — A Practice Study Based on International Competitions
+                            </h3>
+                            <img src="https://valoriaaaa.github.io/paper2-photo.jpg" alt="ICOM Jiangsu presentation" class="w-48 h-auto rounded-lg flex-shrink-0" style="border: 1px solid var(--border-color);">
+                        </div>
+                        <div class="flex flex-wrap gap-4 text-sm text-gray-400 mb-4">
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                                </svg>
+                                <strong>Yuxun Wang</strong>
+                            </span>
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                                </svg>
+                                2025
+                            </span>
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                                </svg>
+                                2025 International Museum Day Youth Academic Forum (ICOM Jiangsu)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <h4 class="font-semibold mb-2 text-lg text-gray-200">Abstract</h4>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Against the backdrop of rapid social transformation and development, museums are confronting unprecedented opportunities and challenges. As a critical component of the museum ecosystem, small and medium-sized museums (SMMs) are also grappling with multiple predicaments, including limited collections, suboptimal exhibition quality, and a scarcity of professional curatorial talent. Addressing these issues has emerged as a top priority in contemporary museum practice.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Youth groups, as the core driving force behind social change, hold central significance for alleviating the dilemmas faced by SMMs—researching youth communities and gaining insights into their thoughts and needs is therefore academically and practically imperative. Thus, implementing the concept of youth co-creation in museums has become a pivotal strategy for museum development. Youth co-creation encompasses diverse pathways, such as museum-school partnerships, competition organization, and volunteer recruitment. However, there remains untapped potential in the development of museum-centric competitions.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Drawing on the author's first-hand participation in China's inaugural international museum competition, Eternal Heritage: Immersive Cultural Heritage Maker Challenge, this study adopts a participatory observation approach to examine how such events, under the framework of youth co-creation, facilitate the construction of interdisciplinary teams, expand international perspectives, integrate cutting-edge technologies, and embed authentic youth viewpoints. Concurrently, these competitions provide platforms and opportunities for youth development, fostering a mutually reinforcing virtuous cycle that offers novel insights into resolving the current predicaments of SMMs.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed">
+                            The study concludes that international museum competitions effectively drive youth engagement in museum co-creation, serving as a viable and effective pathway to address the challenges faced by SMMs. This approach is therefore worthy of broader promotion and practical application in the SMM sector.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Experience Section -->
+    <section id="research-experience" class="py-20" style="background-color: var(--bg-dark);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="max-width: calc(80rem - 2cm);">
+            <h2 class="section-title text-4xl font-bold mb-12" style="color: var(--accent-teal);">Research Experience</h2>
+            
+            <div class="space-y-8">
+                <!-- Experience 1: Boyi -->
+                <div class="card p-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--accent-teal);">Boyi Online Academic Platform</h3>
+                            <p class="text-lg font-semibold">Academic Columnist</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold" style="background-color: var(--accent-teal); color: white;">
+                                01/2026 – Present
+                            </span>
+                        </div>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>Author monthly columns focusing on cutting-edge academic achievements in museum and heritage studies</li>
+                        <li>Conduct systematic literature searches on museum and heritage research, performing critical analysis of emerging trends and methodologies</li>
+                        <li>Translate and analyze English-language papers published by Chinese scholars overseas, organizing them into accessible Chinese articles for domestic practitioners and researchers</li>
+                        <li>Produce in-depth commentaries on topics including authorized heritage discourse, digital narrative in museums, and participatory development in cultural heritage</li>
+                    </ul>
+                </div>
+
+                <!-- Experience 2: Great Bao'en Temple Heritage -->
+                <div class="card p-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--accent-teal);">Great Bao'en Temple Heritage Museum</h3>
+                            <p class="text-lg font-semibold">International Communication Assistant</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold" style="background-color: var(--accent-teal); color: white;">
+                                05/2025 – 08/2025
+                            </span>
+                        </div>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>Conducted archival research and investigated historical exhibition materials to support the museum's annual exhibition program and permanent collection management</li>
+                        <li>Planned and executed community education programs for International Museum Day, applying participatory development theories to foster grassroots involvement in heritage interpretation</li>
+                        <li>Coordinated international exchange projects, facilitating cross-cultural communication between the museum and partner institutions abroad</li>
+                        <li>Designed and administered visitor satisfaction surveys, collecting quantitative and qualitative data to evaluate curatorial effectiveness and inform institutional decision-making</li>
+                    </ul>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+                        <img src="https://valoriaaaa.github.io/baoen-photo1.jpg" alt="Great Bao'en Temple Heritage Museum exhibition" class="w-full h-48 object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                        <img src="https://valoriaaaa.github.io/baoen-photo2.jpg" alt="Great Bao'en Temple Heritage Museum team" class="w-full h-48 object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                        <img src="https://valoriaaaa.github.io/baoen-photo3.jpg" alt="Great Bao'en Temple Heritage Museum tour" class="w-full h-48 object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                    </div>
+                </div>
+
+                <!-- Experience 3: UNESCO Cultural Heritage Conservation Initiative -->
+                <div class="card p-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--accent-teal);">UNESCO Cultural Heritage Conservation Initiative</h3>
+                            <p class="text-lg font-semibold">Volunteer Researcher & Educator</p>
+                            <p class="text-gray-400">Tongdao County, Hunan Province</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold" style="background-color: var(--accent-teal); color: white;">
+                                08/2023
+                            </span>
+                        </div>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>Conducted ethnographic fieldwork on Dong ethnic cultural heritage and produced folklore research reports</li>
+                        <li>Developed intangible cultural heritage woodcarving craft course curriculum for community education</li>
+                        <li>Produced documentary film "Mo Shi" (The Ink Master) documenting intangible cultural heritage inheritors</li>
+                        <li>Designed and installed Dong ethnic cultural digital art exhibition and curated cultural landscape photography exhibition</li>
+                    </ul>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+                        <img src="https://valoriaaaa.github.io/fieldwork-photo1.jpg" alt="Dong Village landscape" class="w-full h-48 object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                        <img src="https://valoriaaaa.github.io/fieldwork-photo2.jpg" alt="Dong Village panorama" class="w-full h-48 object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                        <img src="https://valoriaaaa.github.io/fieldwork-photo3.jpg" alt="Dong Village stone bridge" class="w-full h-48 object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curatorial Projects Section -->
+    <section id="curatorial" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="max-width: calc(80rem - 2cm);">
+            <h2 class="section-title text-4xl font-bold mb-12" style="color: var(--accent-teal);">Curatorial Projects</h2>
+            
+            <div class="space-y-8">
+                <!-- Project 1: Dad's Ocean Voyage -->
+                <div class="card p-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--accent-teal);">Dad's Ocean Voyage — Guangdong Overseas Workers Story Exhibition</h3>
+                            <p class="text-lg font-semibold">Chief Curator</p>
+                            <p class="text-sm mt-1" style="color: var(--accent-teal);">2025 "Online Curator" Competition — Top 10 Exhibition</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold" style="background-color: var(--accent-teal); color: white;">
+                                2025
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        Served as Chief Curator for this exhibition telling the stories of Guangdong overseas Chinese workers (Huaqiao). The project was selected as one of the Top 10 exhibitions in the 2025 "Online Curator" national competition, demonstrating innovative approaches to diaspora heritage interpretation through digital storytelling and community-engaged research methods.
+                    </p>
+
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2 text-lg text-gray-200">Online Exhibition</h4>
+                        <div class="exhibition-container">
+                            <iframe data-original-url="https://www.jiyi.show/fr/#/exhibition/692364522864709/home" width="100%" height="100%" sandbox="allow-scripts allow-same-origin">
+                                <p>Your browser does not support iframes. <a href="https://www.jiyi.show/fr/#/exhibition/692364522864709/home" target="_blank">View the exhibition</a>.</p>
+                            </iframe>
+                        </div>
+                        <div class="mt-4 flex flex-wrap items-start gap-4">
+                            <a href="https://www.jiyi.show/fr/#/exhibition/692364522864709/home" target="_blank" class="btn-primary">
+                                View Full Exhibition
+                                <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                </svg>
+                            </a>
+                            <span style="font-family: 'Microsoft YaHei', sans-serif; font-size: 10.5px; color: #666; flex: 1; line-height: 1.5;">💡 This exhibition is currently available in Chinese only — we sincerely apologize for the inconvenience. To view it in English, you may click the exhibition link and use your browser's built-in translation feature. Thank you so much for your understanding!</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Lacquer East Fantasy -->
+                <div class="card p-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--accent-teal);">Lacquer East Fantasy: Louis's Banquet — Guangzhou Export Lacquerware Special Exhibition</h3>
+                            <p class="text-lg font-semibold">Chief Curator</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold" style="background-color: var(--accent-teal); color: white;">
+                                2025
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        Chief Curator of this special exhibition exploring the history of Guangzhou-made export lacquerware (Guangzuo) and its role in cross-cultural exchange between China and the West. The exhibition traces the journey of Chinese lacquerware along maritime trade routes, examining how these objects served as vehicles of cultural diplomacy and artistic innovation in the 18th and 19th centuries.
+                    </p>
+
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2 text-lg text-gray-200">Online Exhibition</h4>
+                        <div class="exhibition-container">
+                            <iframe data-original-url="https://www.jiyi.show/fr/#/exhibition/791079308472389/home" width="100%" height="100%" sandbox="allow-scripts allow-same-origin">
+                                <p>Your browser does not support iframes. <a href="https://www.jiyi.show/fr/#/exhibition/791079308472389/home" target="_blank">View the exhibition</a>.</p>
+                            </iframe>
+                        </div>
+                        <div class="mt-4 flex flex-wrap items-start gap-4">
+                            <a href="https://www.jiyi.show/fr/#/exhibition/791079308472389/home" target="_blank" class="btn-primary">
+                                View Full Exhibition
+                                <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                </svg>
+                            </a>
+                            <span style="font-family: 'Microsoft YaHei', sans-serif; font-size: 10.5px; color: #666; flex: 1; line-height: 1.5;">💡 This exhibition is currently available in Chinese only — we sincerely apologize for the inconvenience. To view it in English, you may click the exhibition link and use your browser's built-in translation feature. Thank you so much for your understanding!</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Grandma, the Unseen Half-Life -->
+                <div class="card p-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--accent-teal);">Grandma, the Unseen Half-Life Across the Ocean: An Online Story Exhibition of Women from Overseas Chinese Villages</h3>
+                            <p class="text-lg font-semibold">Co-Curator</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold" style="background-color: var(--accent-teal); color: white;">
+                                2025
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        An online story exhibition documenting the lived experiences of women in overseas Chinese villages, centering their often-overlooked narratives within the broader history of diaspora and migration. The project brings visibility to the "unseen half" of the overseas Chinese story through community-sourced oral histories, archival materials, and digital storytelling.
+                    </p>
+
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2 text-lg text-gray-200">Online Exhibition</h4>
+                        <div class="exhibition-container">
+                            <iframe data-original-url="https://www.jiyi.show/fr/#/exhibition/777917928063045/home" width="100%" height="100%" sandbox="allow-scripts allow-same-origin">
+                                <p>Your browser does not support iframes. <a href="https://www.jiyi.show/fr/#/exhibition/777917928063045/home" target="_blank">View the exhibition</a>.</p>
+                            </iframe>
+                        </div>
+                        <div class="mt-4 flex flex-wrap items-start gap-4">
+                            <a href="https://www.jiyi.show/fr/#/exhibition/777917928063045/home" target="_blank" class="btn-primary">
+                                View Full Exhibition
+                                <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                </svg>
+                            </a>
+                            <span style="font-family: 'Microsoft YaHei', sans-serif; font-size: 10.5px; color: #666; flex: 1; line-height: 1.5;">💡 This exhibition is currently available in Chinese only — we sincerely apologize for the inconvenience. To view it in English, you may click the exhibition link and use your browser's built-in translation feature. Thank you so much for your understanding!</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Yunliu Qinghuai -->
+                <div class="card p-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--accent-teal);">Rhythm of Qinhuai River — Immersive Digital Exhibition</h3>
+                            <p class="text-lg font-semibold">Curator & Designer</p>
+                            <p class="text-sm mt-1" style="color: var(--accent-teal);">2024 UNESCO Digital Heritage — Best Concept Award</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold" style="background-color: var(--accent-teal); color: white;">
+                                2024
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        An immersive digital exhibition project that won the Best Concept Award at the 2024 UNESCO Cultural Heritage Maker Competition. The project explores the cultural landscape of the Qinhuai River in Nanjing through digital heritage technologies, combining historical research with interactive digital design to create an immersive experience that bridges traditional cultural narratives with contemporary digital expression.
+                    </p>
+
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2 text-lg text-gray-200">Project Portfolio</h4>
+                        <div class="pdf-container">
+                            <iframe src="https://valoriaaaa.github.io/Curatorial_WorksCollection_Yuxun_Wang.pdf" width="100%" height="100%" type="application/pdf">
+                                <p>Your browser does not support PDFs. <a href="https://valoriaaaa.github.io/Curatorial_WorksCollection_Yuxun_Wang.pdf">Download the PDF</a>.</p>
+                            </iframe>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://valoriaaaa.github.io/Curatorial_WorksCollection_Yuxun_Wang.pdf" download class="btn-primary">
+                                <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                                </svg>
+                                Download Portfolio PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Project 1: InteractiMuse -->
+                <div class="card p-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--accent-teal);">InteractiMuse — Virtual Museum Website</h3>
+                            <p class="text-sm mt-1" style="color: var(--accent-teal);">AdventureX 2026 Competition — Award-Winning Project</p>
+                            <p class="text-sm text-gray-400 mt-1 font-semibold">Role: Creative Narrative & Visual Designer</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold" style="background-color: var(--accent-teal); color: white;">
+                                2026
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        A virtual museum website project that won awards across three tracks at AdventureX 2026: First Prize (Smart Youth Track), Most Shareable Award (Sparkle Track), and Web Application Excellence Award (PICO VR Track). The project explores creative narrative and visual design approaches for virtual museum experiences, integrating interactive storytelling with immersive web technologies.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2 text-sm text-gray-200">Introduction:</h4>
+                        <p class="text-gray-300 mb-3">
+                            InteractiMuse is an online virtual museum designed explicitly for children, grounded in the theoretical framework of embodied learning. It integrates immersive interactive experiences with virtual exhibitions and hands-on tasks to facilitate knowledge exploration and deep conceptual understanding. This platform aims to expand the boundaries of virtual museum design by reconfiguring the paradigm of deep learning in museum contexts through the lens of embodied cognition.
+                        </p>
+                        <p class="text-gray-300 mb-3">
+                            Existing offline participatory learning museums fail to deliver fully immersive learning scenarios, as physical exhibition spaces are often constrained by environmental distractions and structural limitations. In contrast, conventional online museums merely transpose offline content into two-dimensional digital formats, lacking dynamic engagement. To address these gaps, InteractiMuse constructs a one-to-one immersive experience interface between users and digital displays. By designing learning-oriented game modules with lightweight accessibility, it makes educational museum experiences accessible to children in diverse settings.
+                        </p>
+                        <p class="text-gray-300 mb-3">
+                            InteractiMuse decomposes complex cultural heritage knowledge into modular, age-appropriate game tasks, while simultaneously fostering children's hand-eye coordination—thus mitigating the prevalent limitation of unidirectional engagement in existing virtual museums. Currently targeted at children aged 6–14, the platform is tailored for family learning contexts, addressing the core challenge that children often struggle with effective learning in traditional museums due to insufficient foundational knowledge of unfamiliar cultural artifacts. Through interactions with InteractiMuse, children not only acquire cultural heritage knowledge but also refine motor skills (e.g., hand-eye coordination), thereby constructing a bodily action-based deep engagement experience that aligns with embodied learning principles.
+                        </p>
+                    </div>
+                    <div class="mb-4 rounded-lg overflow-hidden">
+                        <img src="https://valoriaaaa.github.io/interactimuse-cover.png" alt="InteractiMuse — Virtual Museum Website" class="w-full h-auto" style="max-height: 500px; object-fit: cover;">
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2 text-sm text-gray-200">Awards:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: var(--text-yellow); color: #1a1a1a;">First Prize — Smart Youth Track</span>
+                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: var(--text-yellow); color: #1a1a1a;">Most Shareable — Sparkle Track</span>
+                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: var(--text-yellow); color: #1a1a1a;">Web App Excellence — PICO VR Track</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-start justify-between gap-4">
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://interactimuse.netlify.app/" target="_blank" class="btn-primary text-sm">
+                                View Project
+                                <svg class="w-3 h-3 inline ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                </svg>
+                            </a>
+                            <span style="font-family: 'Microsoft YaHei', sans-serif; font-size: 11px; color: #666;">This project page is currently in Chinese. We appreciate your understanding!</span>
+                        </div>
+                        <div style="font-family: 'Microsoft YaHei', sans-serif; font-size: 10.5px; color: #777; background: rgba(255,255,255,0.04); border: 1px solid #333; border-radius: 6px; padding: 8px 12px; max-width: 320px; line-height: 1.6;">
+                            <div style="font-weight: 700; font-size: 10px; color: #999; margin-bottom: 3px;">How to Interact</div>
+                            <div style="column-count: 2; column-gap: 12px;">
+                                <div><b>Rotate</b> — Move hand to rotate</div>
+                                <div><b>Zoom</b> — Open/close hands</div>
+                                <div><b>Explore</b> — Point with index finger</div>
+                                <div><b>Select</b> — Make a fist</div>
+                                <div><b>Reset</b> — Peace sign ✌️</div>
+                                <div><b>Mouse</b> — Also supported</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="max-width: calc(80rem - 2cm);">
+            <h2 class="section-title text-4xl font-bold mb-12" style="color: var(--accent-teal);">Awards & Honors</h2>
+            
+            <div class="space-y-6">
+                <!-- Award 1 -->
+                <div class="card p-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-2" style="color: var(--accent-teal);">UNESCO Cultural Heritage Maker Competition — Best Concept Award</h3>
+                            <p class="text-gray-400 mb-2">UNESCO | For "Rhythm of Qinhuai River" Immersive Digital Exhibition</p>
+                            <p class="text-sm text-gray-400">07/2024</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:ml-6">
+                            <div class="w-32 h-32 rounded-lg flex items-center justify-center" style="background-color: var(--bg-card); border: 1px solid var(--border-color);">
+                                <svg class="w-20 h-20" viewBox="0 0 64 64" fill="none">
+                                    <g stroke="#FFD700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M32 4L12 18h40L32 4z"/>
+                                        <line x1="16" y1="18" x2="16" y2="46"/>
+                                        <line x1="24" y1="18" x2="24" y2="46"/>
+                                        <line x1="32" y1="18" x2="32" y2="46"/>
+                                        <line x1="40" y1="18" x2="40" y2="46"/>
+                                        <line x1="48" y1="18" x2="48" y2="46"/>
+                                        <rect x="10" y="46" width="44" height="4" rx="1"/>
+                                        <rect x="8" y="50" width="48" height="4" rx="1"/>
+                                        <circle cx="32" cy="12" r="2"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Award 2 -->
+                <div class="card p-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-2" style="color: var(--accent-teal);">Guangzhou Museum Association "Online Curator" — Top 10 Exhibition</h3>
+                            <p class="text-gray-400 mb-2">Guangzhou Museum Association | For "Dad's Ocean Voyage" Exhibition</p>
+                            <p class="text-sm text-gray-400">10/2025</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:ml-6">
+                            <div class="w-32 h-32 rounded-lg flex flex-col items-center justify-center" style="background-color: var(--bg-card); border: 1px solid var(--border-color);">
+                                <span style="color: #FFD700; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.15em;">TOP</span>
+                                <span style="color: #FFD700; font-size: 2.2rem; font-weight: 900; line-height: 1; letter-spacing: -0.02em;">10</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Award 3 -->
+                <div class="card p-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-2" style="color: var(--accent-teal);">AdventureX 2026 — First Prize, Smart Youth Track</h3>
+                            <p class="text-gray-400 mb-2">AdventureX | For "InteractiMuse" Virtual Museum Project</p>
+                            <p class="text-sm text-gray-400">07/2026</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:ml-6">
+                            <div class="w-32 h-32 rounded-lg flex flex-col items-center justify-center" style="background-color: var(--bg-card); border: 1px solid var(--border-color);">
+                                <span style="color: #FFD700; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.08em;">First</span>
+                                <span style="color: #FFD700; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; margin-top: 2px;">AdventureX</span>
+                                <span style="color: #FFD700; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em;">2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Award 4 -->
+                <div class="card p-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-2" style="color: var(--accent-teal);">AdventureX 2026 — Most Shareable Award, Sparkle Track</h3>
+                            <p class="text-gray-400 mb-2">AdventureX | For "InteractiMuse" Virtual Museum Project</p>
+                            <p class="text-sm text-gray-400">07/2026</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:ml-6">
+                            <div class="w-32 h-32 rounded-lg flex flex-col items-center justify-center" style="background-color: var(--bg-card); border: 1px solid var(--border-color);">
+                                <span style="color: #FFD700; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em;">AdventureX</span>
+                                <span style="color: #FFD700; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em;">2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Award 5 -->
+                <div class="card p-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-2" style="color: var(--accent-teal);">AdventureX 2026 — Web Application Excellence Award, PICO VR Track</h3>
+                            <p class="text-gray-400 mb-2">AdventureX | For "InteractiMuse" Virtual Museum Project</p>
+                            <p class="text-sm text-gray-400">07/2026</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:ml-6">
+                            <div class="w-32 h-32 rounded-lg flex flex-col items-center justify-center" style="background-color: var(--bg-card); border: 1px solid var(--border-color);">
+                                <span style="color: #FFD700; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em;">AdventureX</span>
+                                <span style="color: #FFD700; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em;">2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Award 6 -->
+                <div class="card p-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-2" style="color: var(--accent-teal);">Nanjing University of the Arts Outstanding Student Scholarship</h3>
+                            <p class="text-gray-400 mb-2">Nanjing University of the Arts</p>
+                            <p class="text-sm text-gray-400">12/2025</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:ml-6">
+                            <div class="w-32 h-32 rounded-lg flex items-center justify-center overflow-hidden" style="background-color: var(--bg-card); border: 1px solid var(--border-color);">
+                                <img src="https://valoriaaaa.github.io/nua-logo.jpg" alt="NUA logo" class="w-full h-full object-contain p-1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Award 7 -->
+                <div class="card p-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-2" style="color: var(--accent-teal);">Nanjing University of the Arts Outstanding Student Scholarship</h3>
+                            <p class="text-gray-400 mb-2">Nanjing University of the Arts</p>
+                            <p class="text-sm text-gray-400">12/2023</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:ml-6">
+                            <div class="w-32 h-32 rounded-lg flex items-center justify-center overflow-hidden" style="background-color: var(--bg-card); border: 1px solid var(--border-color);">
+                                <img src="https://valoriaaaa.github.io/nua-logo.jpg" alt="NUA logo" class="w-full h-full object-contain p-1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience Section -->
+    <section id="professional" class="py-20" style="background-color: var(--bg-dark);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="max-width: calc(80rem - 2cm);">
+            <h2 class="section-title text-4xl font-bold mb-12" style="color: var(--accent-teal);">Professional Experience</h2>
+            
+            <div class="space-y-8">
+                <!-- Great Bao'en Story Center -->
+                <div class="card p-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--accent-teal);">Great Bao'en Story Center — Annual Digital Exhibition</h3>
+                            <p class="text-lg font-semibold">Exhibition Curator & Cultural Heritage Consultant</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold" style="background-color: var(--accent-teal); color: white;">
+                                10/2024 – 12/2024
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        Served as Chief Planner and Copywriter for the annual digital exhibition at the Great Bao'en Story Center. Responsibilities included exhibit collection and provenance research, historical source verification, and providing professional cultural heritage consulting services for the exhibition design team. The project integrated digital storytelling techniques with rigorous historical scholarship to create an immersive visitor experience.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                        <img src="https://valoriaaaa.github.io/baoen-pro-photo1.jpg" alt="Great Bao'en Story Center work" class="w-full h-auto rounded-lg" style="border: 1px solid var(--border-color);">
+                        <img src="https://valoriaaaa.github.io/baoen-pro-photo2.jpg" alt="Great Bao'en Story Center event" class="w-full h-auto rounded-lg" style="border: 1px solid var(--border-color);">
+                    </div>
+                </div>
+
+                <!-- Deji Art Museum -->
+                <div class="card p-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--accent-teal);">Deji Art Museum</h3>
+                            <p class="text-lg font-semibold">Operations Intern</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold" style="background-color: var(--accent-teal); color: white;">
+                                05/2023 – 05/2024
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex-1">
+                            <ul class="list-disc list-inside space-y-2 text-gray-300">
+                                <li>Managed daily operations of permanent exhibitions, including visitor reception and gallery maintenance</li>
+                                <li>Coordinated educational programs and community engagement activities for diverse audience groups</li>
+                                <li>Designed and conducted visitor satisfaction surveys, analyzing quantitative and qualitative feedback to improve exhibition presentation</li>
+                                <li>Developed promotional strategies and marketing plans to increase museum visibility and audience reach</li>
+                                <li>Provided VIP guided tour services, offering in-depth interpretation of exhibition content and curatorial concepts</li>
+                            </ul>
+                        </div>
+                        <div class="md:w-64 flex-shrink-0">
+                            <img src="https://valoriaaaa.github.io/deji-photo1.jpg" alt="Deji Art Museum gallery tour" class="w-full h-auto rounded-lg" style="border: 1px solid var(--border-color);">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Experience Section -->
+    <section id="volunteer" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="max-width: calc(80rem - 2cm);">
+            <h2 class="section-title text-4xl font-bold mb-12" style="color: var(--accent-teal);">Volunteer Experience</h2>
+            
+            <div class="space-y-6">
+                <!-- Volunteer 2: Nanjing Museum -->
+                <div class="card p-6">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-2" style="color: var(--accent-teal);">Nanjing Museum — Visitor Guide Volunteer</h3>
+                            <p class="text-lg font-semibold mb-2">Gallery Guide & Education Assistant</p>
+                            <ul class="list-disc list-inside space-y-1 text-gray-300">
+                                <li>Planned and implemented educational programs for museum visitors</li>
+                                <li>Provided on-site support for major museum events and special exhibitions</li>
+                                <li>Delivered visitor interpretation and guided tours of permanent and temporary exhibitions</li>
+                                <li>Managed visitor reservations, reception, and guided tour services</li>
+                            </ul>
+                        </div>
+                        <div class="mt-2 md:mt-0 md:ml-6">
+                            <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold" style="background-color: var(--accent-teal); color: white;">
+                                05/2023 – 12/2025
+                            </span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+                        <img src="https://valoriaaaa.github.io/nanjing-museum-vol1.jpg" alt="Nanjing Museum volunteer" class="w-full h-48 object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                        <img src="https://valoriaaaa.github.io/nanjing-museum-vol2.jpg" alt="Nanjing Museum International Museum Day" class="w-full h-48 object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                        <img src="https://valoriaaaa.github.io/nanjing-museum-vol3.jpg" alt="Nanjing Museum visitor guidance" class="w-full h-48 object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                        <img src="https://valoriaaaa.github.io/nanjing-museum-vol4.jpg" alt="Nanjing Museum visitor interaction" class="w-full h-48 object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                        <img src="https://valoriaaaa.github.io/nanjing-museum-vol5.jpg" alt="Nanjing Museum education program" class="w-full h-48 object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                        <img src="https://valoriaaaa.github.io/nanjing-museum-vol6.jpg" alt="Nanjing Museum children's art workshop" class="w-full h-48 object-cover rounded-lg" style="border: 1px solid var(--border-color);">
+                    </div>
+                </div>
+
+                <!-- Volunteer 3: IP Youth -->
+                <div class="card p-6">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-2" style="color: var(--accent-teal);">Jiangsu Province Intellectual Property Youth Volunteer</h3>
+                            <p class="text-lg font-semibold mb-2">Heritage Research Volunteer</p>
+                            <ul class="list-disc list-inside space-y-1 text-gray-300">
+                                <li>Conducted field investigations and research on branded intangible cultural heritage in Nanjing</li>
+                                <li>Studied the processes of intangible cultural heritage branding and commercialization</li>
+                                <li>Planned and produced documentary films on intangible cultural heritage brands and craftsmanship</li>
+                            </ul>
+                        </div>
+                        <div class="mt-2 md:mt-0 md:ml-6">
+                            <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold" style="background-color: var(--accent-teal); color: white;">
+                                10/2023 – 10/2024
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section (bonus) -->
+    <section id="skills" class="py-16" style="background-color: var(--bg-dark);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="max-width: calc(80rem - 2cm);">
+            <h2 class="section-title text-4xl font-bold mb-12" style="color: var(--accent-teal);">Skills</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--accent-teal);">Languages</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><span class="font-semibold">Chinese:</span> Native</li>
+                        <li><span class="font-semibold">English:</span> C1 Proficient — advanced reading and writing, able to translate professional academic literature</li>
+                    </ul>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--accent-teal);">Technical Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-700 text-white rounded-full text-sm">WPS Office Suite</span>
+                        <span class="px-3 py-1 bg-gray-700 text-white rounded-full text-sm">Adobe Photoshop</span>
+                        <span class="px-3 py-1 bg-gray-700 text-white rounded-full text-sm">AutoCAD</span>
+                        <span class="px-3 py-1 bg-gray-700 text-white rounded-full text-sm">Academic Writing</span>
+                        <span class="px-3 py-1 bg-gray-700 text-white rounded-full text-sm">Ethnographic Methods</span>
+                        <span class="px-3 py-1 bg-gray-700 text-white rounded-full text-sm">Exhibition Design</span>
+                    </div>
+                </div>
+                <div class="card p-6 md:col-span-2">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--accent-teal);">Painting</h3>
+                    <div class="painting-masonry">
+                        <img src="https://valoriaaaa.github.io/painting-1.jpg" alt="Painting 1" onclick="openLightbox(this.src)">
+                        <img src="https://valoriaaaa.github.io/painting-2.jpg" alt="Painting 2" onclick="openLightbox(this.src)">
+                        <img src="https://valoriaaaa.github.io/painting-3.jpg" alt="Painting 3" onclick="openLightbox(this.src)">
+                        <img src="https://valoriaaaa.github.io/painting-4.jpg" alt="Painting 4" onclick="openLightbox(this.src)">
+                        <img src="https://valoriaaaa.github.io/painting-5.jpg" alt="Painting 5" onclick="openLightbox(this.src)">
+                        <img src="https://valoriaaaa.github.io/painting-6.jpg" alt="Painting 6" onclick="openLightbox(this.src)">
+                        <img src="https://valoriaaaa.github.io/painting-7.jpg" alt="Painting 7" onclick="openLightbox(this.src)">
+                        <img src="https://valoriaaaa.github.io/painting-8.jpg" alt="Painting 8" onclick="openLightbox(this.src)">
+                        <img src="https://valoriaaaa.github.io/painting-9.jpg" alt="Painting 9" onclick="openLightbox(this.src)">
+                        <img src="https://valoriaaaa.github.io/painting-11.jpg" alt="Painting 11" onclick="openLightbox(this.src)">
+                        <img src="https://valoriaaaa.github.io/painting-10.jpg" alt="Painting 10" onclick="openLightbox(this.src)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img id="lightbox-img" src="" alt="Enlarged painting">
     </div>
-</header>
 
-<nav class="container desktop-menu" style="margin-top: 20px; text-align: center;">
-    <a href="#education" class="nav-link">Education</a>
-    <a href="#research-interests" class="nav-link">Research Interests</a>
-    <a href="#doctoral-research" class="nav-link">Doctoral Agenda</a>
-    <a href="#publications" class="nav-link">Publications</a>
-    <a href="#research-experience" class="nav-link">Research Experience</a>
-    <a href="#curatorial" class="nav-link">Curatorial</a>
-    <a href="#awards" class="nav-link">Awards</a>
-    <a href="#professional" class="nav-link">Professional</a>
-    <a href="#volunteer" class="nav-link">Volunteer</a>
-    <a href="#skills" class="nav-link">Skills</a>
-</nav>
-
-<div class="container">
-    
-    <section id="education">
-        <h2 class="section-title">Education</h2>
-        <div class="card card-content">
-            <h3>Nanjing University of the Arts, China</h3>
-            <p><strong>Bachelor of Arts in Cultural Heritage Science</strong><br>Minor: Fine Arts (Cultural Heritage Science)<br>09/2022 – 06/2026<br>GPA: 88/100 (Top 10% in major ranking)</p>
-            
-            <h4>Key Undergraduate Courses:</h4>
-            <ul>
-                <li>Museum Management</li>
-                <li>Cultural Heritage Exhibition Planning</li>
-                <li>Cultural Heritage Exhibition Design</li>
-                <li>History of Chinese Arts and Crafts</li>
-                <li>Cultural Arts Laws and Regulations</li>
-                <li>Ancient Chinese Architecture History</li>
-                <li>Cultural Heritage Conservation Materials</li>
-                <li>Art Archaeology</li>
-                <li>History and Theory of Cultural Heritage Protection</li>
-                <li>Folklore</li>
-                <li>Field Research Methods</li>
-                <li>Field Survey Practice</li>
-            </ul>
-
-            <h4>Nanjing Folk Custom Museum and Nanjing Art Institute Cooperative Course</h4>
-            <p><strong>Nanjing University of the Arts & Nanjing Folk Custom Museum</strong></p>
-            <p><strong>Course Content:</strong></p>
-            <ul>
-                <li>Master Class on Intangible Cultural Heritage (ICH) Craftsmanship Research and Inheritance</li>
-                <li>Research on the Current Status of ICH Inheritance and Field Interviews</li>
-                <li>Mechanism of Museum Operation and Practice of Study-Travel Programs</li>
-                <li>Museum Public Services and Volunteer Practice</li>
-                <li>Management and Leadership Studies of Cultural Heritage Institutions</li>
-            </ul>
-
-            <h4>My Reflections and Insights</h4>
-            <p><strong>Architectural Preservation Challenges:</strong> As a cultural heritage site of historic residential architecture, the museum faces preservation challenges posed by the influx of large-scale study-travel participants.</p>
-            <p><strong>ICH Transmission Dilemmas:</strong> Core intangible cultural heritage (ICH) craftsmanship is difficult to effectively transfer to younger study-travel groups through short-term programs. One-off experiential activities lack constructive value for both children's meaningful engagement and the sustainable development of ICH. Balancing the demand for recreational study-travel experiences with the need for in-depth ICH dissemination remains a long-term research topic.</p>
-            <p><strong>Community-Museum Relationships:</strong> The dynamic between local communities and the museum requires further exploration; an equitable and mutually beneficial interactive mechanism should be established.</p>
-            <p><strong>Institutional Management Reflections:</strong> The director's "governance through non-interference" approach embodies certain wisdom, yet it places excessively high demands on individual managerial competence. Thus, more stable and replicable management frameworks warrant exploration.</p>
-            
-            <div class="painting-masonry">
-                <img src="https://valoriaaaa.github.io/folk-museum-course1.jpg" alt="Nanjing Folk Custom Museum joint training course - paper-cut artwork" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/folk-museum-course2.jpg" alt="Nanjing Folk Custom Museum joint training course - volunteers teaching children" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/folk-museum-course3.jpg" alt="Nanjing Folk Custom Museum joint training course - embroidery work" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/folk-museum-course4.jpg" alt="Nanjing Folk Custom Museum joint training course - face painting drawings" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/folk-museum-course5.jpg" alt="Nanjing Folk Custom Museum joint training course - museum garden" onclick="openLightbox(this.src)">
-            </div>
+    <!-- Footer -->
+    <footer class="py-8 text-white" style="background-color: #0a0a0a;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" style="max-width: calc(80rem - 2cm);">
+            <p class="mb-2">&copy; 2026 Yuxun Wang. All rights reserved.</p>
+            <p class="text-sm opacity-80">Last Updated: September 2026</p>
         </div>
-    </section>
+    </footer>
 
-    <section id="research-interests">
-        <h2 class="section-title">Research Interests</h2>
-        <div class="card card-content">
-            <h3>Keywords</h3>
-            <div>Cultural Anthropology Digitization of Community Archives Digitization of Cultural Heritage Heritage Studies Community Engagement in Archiving Museology Museum Curation</div>
-            
-            <h3>Description</h3>
-            <p>My research interests are anchored in three interconnected domains: Cultural Anthropology, heritage studies, and museology. In the field of cultural anthropology, I am particularly concerned with identity formation and role categorization among participants, administrators, and community residents in museums and heritage sites, as well as the ways in which different roles influence culture within these cultural heritage sites or cultural institutions, and what underlying power dynamics are at play. In heritage studies, I examine the politics of intangible cultural heritage (ICH) documentation and how community-led conservation practices challenge top-down, state-centric models of heritage designation. In museology, I conceptualize curatorial practice as a mediating form of knowledge production, analyzing how exhibition design, object classification systems, and interpretive frameworks encode institutional power relations within cultural institutions.</p>
-        </div>
-    </section>
+    <!-- Back to Top Button -->
+    <div id="backToTop" onclick="scrollToTop()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </div>
 
-    <section id="doctoral-research">
-        <h2 class="section-title">Doctoral Research Agenda</h2>
-        <div class="card card-content">
-            <h3>The Metadatafication of Oral History in Participatory Interpretation: A Study on Museum Selection, Description, and Representation Mechanisms</h3>
-            
-            <h4>Core Questions</h4>
-            <p>This study examines participatory interpretation initiatives in museums situated within place-based communities, with oral history serving as the primary case study to represent community voices. The central inquiry concerns the museum's curation of oral narratives contributed by both residents and visitors. Specifically, it investigates the mechanisms through which community voices are mediated, filtered, or modified within institutional archives.</p>
-            <p>The research addresses three key questions:</p>
-            <ul>
-                <li>What elements of oral history are subject to selection or alteration?</li>
-                <li>Why are these interventions undertaken?</li>
-                <li>How do various structural factors and stakeholder dynamics shape this process?</li>
-            </ul>
-        </div>
-    </section>
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
 
-    <section id="publications">
-        <h2 class="section-title">Publications</h2>
-        
-        <div class="card card-content">
-            <h3>Exploration of Cultural Heritage Interpretation Pathways from the Perspective of Participatory Development Theory — A Case Study of Nanjing's "Digital Heritage" Project</h3>
-            <p><strong>Yuxun Wang</strong> (First Author) 2026 (Forthcoming) 3rd Forum on Cultural Heritage and Social Development, Zhejiang University</p>
-            
-            <h4>Abstract</h4>
-            <p>The introduction of innovative change in the interpretation practices in museums is essential in cultural heritage institutions to deliver the cultural heritage in an effective manner and fulfill the social value of cultural heritage. Another benefit of exploring new methods of heritage interpretation is that it not only responds to the needs of the public to be engaged in cultural activities but encourages new forms of interpretation. Basing on the outlook of the participatory development theory, the given study incorporates its main idea, the ability to turn the passive receivers into the active creators, in the examination of the cultural heritage interpretation routes. The research with the help of case analysis suggests a three-phase model of participatory interpretation, which presents a theoretically based and practically used framework of innovation of the cultural heritage interpretation techniques. The study targets the role of the multi-stakeholder intervention in supporting the shift of heritage interpretation towards sharing process rather than delivering outcomes. A hybrid approach of participatory inquiry and case study was taken, and an intensive two-year follow-up study of the project of Digital Heritage on the Nanjing Great Bao'en Temple Site Museum was performed. The results show that the participatory development theory offers a fundamental rationale of mutual interpretive engagements in cultural heritage which highlight the transition of closed functioning towards gradual openness to the populace as well as the maintenance of the quality of interpretation by moderate delegation of cultural authority. This method provides a radical model between theory and practice of innovation in heritage interpretation.</p>
-            
-            <h4>Introduction</h4>
-            <p>I initiated research on this museum project in 2024, independently designing its research framework and methodology, which ultimately formed the basis of my undergraduate thesis. Over a two-year longitudinal study, I engaged in participant observation through three overlapping roles—contestant, curator, and event staff—while collecting extensive primary data via questionnaires and semi-structured in-depth interviews with audiences and internal personnel. This empirical evidence underpinned the development of my final interpretive model.</p>
-            <p>This research systematically analyzes how multi-stakeholder engagement at distinct stages of museum object interpretation catalyzes the excavation of the objects' multi-layered meanings, and proposes a three-stage participatory interpretation model. The model posits that, within the context of cultural institutions (e.g., museums) retaining interpretive sovereignty, museum object interpretation remains a closed process for the public. This closure situates visitors in an "absent context" between the interpretive process and the exhibited display, leading to the erosion of partial cultural agency. To address this impasse, the model centers on the logic of shared interpretive processes, emphasizing a shift from closure to openness and from one-way transmission to community co-creation. It argues that diverse communities can intervene at different stages of the interpretive process, thereby mitigating the absent context.</p>
-            <p>This experience has solidified my commitment to advancing scholarship in museum anthropology. Doctoral studies will afford me the sustained, coherent timeframe necessary to systematically investigate the topics that both perplex and captivate me.</p>
-
-            <h4>Paper Structure</h4>
-            <img src="https://valoriaaaa.github.io/Exploration%20of%20Cultural%20Heritage%20Interpretation%20Pathways.png" alt="Paper 1 structure diagram" style="max-width: 100%; height: auto; margin: 10px 0;">
-
-            <h4>Key Outcomes</h4>
-            <img src="https://valoriaaaa.github.io/paper1-key-outcomes.jpg" alt="Paper 1 key outcomes diagram" style="max-width: 100%; height: auto; margin: 10px 0;">
-            
-            <p><strong>Dynamic Three-Stage Model for Cultural Heritage Interpretation</strong></p>
-            <p>This study constructs a dynamic three-stage model for cultural heritage interpretation oriented toward <strong>open cultural rights</strong>. The theoretical model draws on two foundational frameworks:</p>
-            <ul>
-                <li><strong>Jelka Pirković's General Model of Heritage Interpretation</strong> — emphasizes the co-participation of memory, values, and knowledge as core drivers of interpretation.</li>
-                <li><strong>Tolkach et al.'s Community-Centered Heritage Sustainability Model</strong> — advocates for community-led sustainable heritage management enabled by multidimensional empowerment.</li>
-            </ul>
-            <p>The model conceptualizes interpretation as an interpenetrating dynamic system of three interdependent stages:</p>
-            <ol>
-                <li><strong>Pre-interpretation:</strong> Aggregation of interpretive resources mediated by the community — community actors curate and mobilize local heritage resources as the basis for interpretation.</li>
-                <li><strong>In-interpretation:</strong> Translation of interpretive materials by participants — participants recontextualize and transform heritage content into accessible, contextually relevant forms.</li>
-                <li><strong>Post-interpretation:</strong> Evaluation of interpretive outcomes by internal experts and external audiences — dual-stakeholder feedback validates the accuracy, relevance, and impact of interpretation.</li>
-            </ol>
-            <p>These stages form a <strong>closed-loop system</strong> through empowerment mechanisms, driving continuous reconstruction and renewal of heritage meanings among diverse stakeholders.</p>
-            <p><strong>Empirical findings:</strong> The model effectively enhances the public's emotional connection to heritage and cultivates a sense of ownership.</p>
-            <p><strong>Three key challenges:</strong> (1) insufficient participation sustainability; (2) ambiguous boundaries of power devolution; (3) absence of long-term impact assessment.</p>
-        </div>
-
-        <div class="card card-content">
-            <h3>Exploring Innovative Development Pathways for Small and Medium-Sized Museums from the Perspective of Youth Co-Creation — A Practice Study Based on International Competitions</h3>
-            <img src="https://valoriaaaa.github.io/paper2-photo.jpg" alt="ICOM Jiangsu presentation" style="max-width: 100%; height: auto; margin: 10px 0;">
-            <p><strong>Yuxun Wang</strong> 2025 2025 International Museum Day Youth Academic Forum (ICOM Jiangsu)</p>
-            
-            <h4>Abstract</h4>
-            <p>Against the backdrop of rapid social transformation and development, museums are confronting unprecedented opportunities and challenges. As a critical component of the museum ecosystem, small and medium-sized museums (SMMs) are also grappling with multiple predicaments, including limited collections, suboptimal exhibition quality, and a scarcity of professional curatorial talent. Addressing these issues has emerged as a top priority in contemporary museum practice.</p>
-            <p>Youth groups, as the core driving force behind social change, hold central significance for alleviating the dilemmas faced by SMMs—researching youth communities and gaining insights into their thoughts and needs is therefore academically and practically imperative. Thus, implementing the concept of youth co-creation in museums has become a pivotal strategy for museum development. Youth co-creation encompasses diverse pathways, such as museum-school partnerships, competition organization, and volunteer recruitment. However, there remains untapped potential in the development of museum-centric competitions.</p>
-            <p>Drawing on the author's first-hand participation in China's inaugural international museum competition, Eternal Heritage: Immersive Cultural Heritage Maker Challenge, this study adopts a participatory observation approach to examine how such events, under the framework of youth co-creation, facilitate the construction of interdisciplinary teams, expand international perspectives, integrate cutting-edge technologies, and embed authentic youth viewpoints. Concurrently, these competitions provide platforms and opportunities for youth development, fostering a mutually reinforcing virtuous cycle that offers novel insights into resolving the current predicaments of SMMs.</p>
-            <p>The study concludes that international museum competitions effectively drive youth engagement in museum co-creation, serving as a viable and effective pathway to address the challenges faced by SMMs. This approach is therefore worthy of broader promotion and practical application in the SMM sector.</p>
-        </div>
-    </section>
-
-    <section id="research-experience">
-        <h2 class="section-title">Research Experience</h2>
-        
-        <div class="card card-content">
-            <h3>Boyi Online Academic Platform</h3>
-            <p><strong>Academic Columnist</strong><br>01/2026 – Present</p>
-            <ul>
-                <li>Author monthly columns focusing on cutting-edge academic achievements in museum and heritage studies</li>
-                <li>Conduct systematic literature searches on museum and heritage research, performing critical analysis of emerging trends and methodologies</li>
-                <li>Translate and analyze English-language papers published by Chinese scholars overseas, organizing them into accessible Chinese articles for domestic practitioners and researchers</li>
-                <li>Produce in-depth commentaries on topics including authorized heritage discourse, digital narrative in museums, and participatory development in cultural heritage</li>
-            </ul>
-        </div>
-
-        <div class="card card-content">
-            <h3>Great Bao'en Temple Heritage Museum</h3>
-            <p><strong>International Communication Assistant</strong><br>05/2025 – 08/2025</p>
-            <ul>
-                <li>Conducted archival research and investigated historical exhibition materials to support the museum's annual exhibition program and permanent collection management</li>
-                <li>Planned and executed community education programs for International Museum Day, applying participatory development theories to foster grassroots involvement in heritage interpretation</li>
-                <li>Coordinated international exchange projects, facilitating cross-cultural communication between the museum and partner institutions abroad</li>
-                <li>Designed and administered visitor satisfaction surveys, collecting quantitative and qualitative data to evaluate curatorial effectiveness and inform institutional decision-making</li>
-            </ul>
-            <div class="painting-masonry">
-                <img src="https://valoriaaaa.github.io/baoen-photo1.jpg" alt="Great Bao'en Temple Heritage Museum exhibition" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/baoen-photo2.jpg" alt="Great Bao'en Temple Heritage Museum team" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/baoen-photo3.jpg" alt="Great Bao'en Temple Heritage Museum tour" onclick="openLightbox(this.src)">
-            </div>
-        </div>
-
-        <div class="card card-content">
-            <h3>UNESCO Cultural Heritage Conservation Initiative</h3>
-            <p><strong>Volunteer Researcher & Educator</strong><br>Tongdao County, Hunan Province<br>08/2023</p>
-            <ul>
-                <li>Conducted ethnographic fieldwork on Dong ethnic cultural heritage and produced folklore research reports</li>
-                <li>Developed intangible cultural heritage woodcarving craft course curriculum for community education</li>
-                <li>Produced documentary film "Mo Shi" (The Ink Master) documenting intangible cultural heritage inheritors</li>
-                <li>Designed and installed Dong ethnic cultural digital art exhibition and curated cultural landscape photography exhibition</li>
-            </ul>
-            <div class="painting-masonry">
-                <img src="https://valoriaaaa.github.io/fieldwork-photo1.jpg" alt="Dong Village landscape" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/fieldwork-photo2.jpg" alt="Dong Village panorama" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/fieldwork-photo3.jpg" alt="Dong Village stone bridge" onclick="openLightbox(this.src)">
-            </div>
-        </div>
-    </section>
-
-    <section id="curatorial">
-        <h2 class="section-title">Curatorial Projects</h2>
-        
-        <div class="card card-content">
-            <h3>Dad's Ocean Voyage — Guangdong Overseas Workers Story Exhibition</h3>
-            <p><strong>Chief Curator</strong><br>2025 "Online Curator" Competition — Top 10 Exhibition<br>2025</p>
-            <p>Served as Chief Curator for this exhibition telling the stories of Guangdong overseas Chinese workers (Huaqiao). The project was selected as one of the Top 10 exhibitions in the 2025 "Online Curator" national competition, demonstrating innovative approaches to diaspora heritage interpretation through digital storytelling and community-engaged research methods.</p>
-            <p><strong>Online Exhibition</strong></p>
-            <iframe data-original-url="https://www.jiyi.show/fr/#/exhibition/692364522864709/home" title="Dad's Ocean Voyage Exhibition"></iframe>
-            <p><a href="https://www.jiyi.show/fr/#/exhibition/692364522864709/home" target="_blank">View Full Exhibition</a> 💡 This exhibition is currently available in Chinese only — we sincerely apologize for the inconvenience. To view it in English, you may click the exhibition link and use your browser's built-in translation feature. Thank you so much for your understanding!</p>
-        </div>
-
-        <div class="card card-content">
-            <h3>Lacquer East Fantasy: Louis's Banquet — Guangzhou Export Lacquerware Special Exhibition</h3>
-            <p><strong>Chief Curator</strong><br>2025</p>
-            <p>Chief Curator of this special exhibition exploring the history of Guangzhou-made export lacquerware (Guangzuo) and its role in cross-cultural exchange between China and the West. The exhibition traces the journey of Chinese lacquerware along maritime trade routes, examining how these objects served as vehicles of cultural diplomacy and artistic innovation in the 18th and 19th centuries.</p>
-            <p><strong>Online Exhibition</strong></p>
-            <iframe data-original-url="https://www.jiyi.show/fr/#/exhibition/791079308472389/home" title="Lacquer East Fantasy Exhibition"></iframe>
-            <p><a href="https://www.jiyi.show/fr/#/exhibition/791079308472389/home" target="_blank">View Full Exhibition</a> 💡 This exhibition is currently available in Chinese only — we sincerely apologize for the inconvenience. To view it in English, you may click the exhibition link and use your browser's built-in translation feature. Thank you so much for your understanding!</p>
-        </div>
-
-        <div class="card card-content">
-            <h3>Grandma, the Unseen Half-Life Across the Ocean: An Online Story Exhibition of Women from Overseas Chinese Villages</h3>
-            <p><strong>Co-Curator</strong><br>2025</p>
-            <p>An online story exhibition documenting the lived experiences of women in overseas Chinese villages, centering their often-overlooked narratives within the broader history of diaspora and migration. The project brings visibility to the "unseen half" of the overseas Chinese story through community-sourced oral histories, archival materials, and digital storytelling.</p>
-            <p><strong>Online Exhibition</strong></p>
-            <iframe data-original-url="https://www.jiyi.show/fr/#/exhibition/777917928063045/home" title="Grandma Exhibition"></iframe>
-            <p><a href="https://www.jiyi.show/fr/#/exhibition/777917928063045/home" target="_blank">View Full Exhibition</a> 💡 This exhibition is currently available in Chinese only — we sincerely apologize for the inconvenience. To view it in English, you may click the exhibition link and use your browser's built-in translation feature. Thank you so much for your understanding!</p>
-        </div>
-
-        <div class="card card-content">
-            <h3>Rhythm of Qinhuai River — Immersive Digital Exhibition</h3>
-            <p><strong>Curator & Designer</strong><br>2024 UNESCO Digital Heritage — Best Concept Award<br>2024</p>
-            <p>An immersive digital exhibition project that won the Best Concept Award at the 2024 UNESCO Cultural Heritage Maker Competition. The project explores the cultural landscape of the Qinhuai River in Nanjing through digital heritage technologies, combining historical research with interactive digital design to create an immersive experience that bridges traditional cultural narratives with contemporary digital expression.</p>
-            <p><strong>Project Portfolio</strong></p>
-            <p>Your browser does not support PDFs. <a href="https://valoriaaaa.github.io/Curatorial_WorksCollection_Yuxun_Wang.pdf">Download the PDF</a>.</p>
-            <a href="https://valoriaaaa.github.io/Curatorial_WorksCollection_Yuxun_Wang.pdf" class="btn-primary" download>Download Portfolio PDF</a>
-        </div>
-
-        <div class="card card-content">
-            <h3>InteractiMuse — Virtual Museum Website</h3>
-            <p><strong>AdventureX 2026 Competition — Award-Winning Project</strong><br>Role: Creative Narrative & Visual Designer<br>2026</p>
-            <p>A virtual museum website project that won awards across three tracks at AdventureX 2026: First Prize (Smart Youth Track), Most Shareable Award (Sparkle Track), and Web Application Excellence Award (PICO VR Track). The project explores creative narrative and visual design approaches for virtual museum experiences, integrating interactive storytelling with immersive web technologies.</p>
-            
-            <h4>Introduction:</h4>
-            <p>InteractiMuse is an online virtual museum designed explicitly for children, grounded in the theoretical framework of embodied learning. It integrates immersive interactive experiences with virtual exhibitions and hands-on tasks to facilitate knowledge exploration and deep conceptual understanding. This platform aims to expand the boundaries of virtual museum design by reconfiguring the paradigm of deep learning in museum contexts through the lens of embodied cognition.</p>
-            <p>Existing offline participatory learning museums fail to deliver fully immersive learning scenarios, as physical exhibition spaces are often constrained by environmental distractions and structural limitations. In contrast, conventional online museums merely transpose offline content into two-dimensional digital formats, lacking dynamic engagement. To address these gaps, InteractiMuse constructs a one-to-one immersive experience interface between users and digital displays. By designing learning-oriented game modules with lightweight accessibility, it makes educational museum experiences accessible to children in diverse settings.</p>
-            <p>InteractiMuse decomposes complex cultural heritage knowledge into modular, age-appropriate game tasks, while simultaneously fostering children's hand-eye coordination—thus mitigating the prevalent limitation of unidirectional engagement in existing virtual museums. Currently targeted at children aged 6–14, the platform is tailored for family learning contexts, addressing the core challenge that children often struggle with effective learning in traditional museums due to insufficient foundational knowledge of unfamiliar cultural artifacts. Through interactions with InteractiMuse, children not only acquire cultural heritage knowledge but also refine motor skills (e.g., hand-eye coordination), thereby constructing a bodily action-based deep engagement experience that aligns with embodied learning principles.</p>
-            
-            <img src="https://valoriaaaa.github.io/interactimuse-cover.png" alt="InteractiMuse — Virtual Museum Website" style="max-width: 100%; height: auto; margin: 10px 0;">
-            
-            <h4>Awards:</h4>
-            <ul>
-                <li>First Prize — Smart Youth Track</li>
-                <li>Most Shareable — Sparkle Track</li>
-                <li>Web App Excellence — PICO VR Track</li>
-            </ul>
-            <a href="https://interactimuse.netlify.app/" target="_blank" class="btn-primary">View Project</a>
-            <p>This project page is currently in Chinese. We appreciate your understanding!</p>
-            
-            <h4>How to Interact</h4>
-            <ul>
-                <li><strong>Rotate</strong> — Move hand to rotate</li>
-                <li><strong>Zoom</strong> — Open/close hands</li>
-                <li><strong>Explore</strong> — Point with index finger</li>
-                <li><strong>Select</strong> — Make a fist</li>
-                <li><strong>Reset</strong> — Peace sign ✌️</li>
-                <li><strong>Mouse</strong> — Also supported</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="awards">
-        <h2 class="section-title">Awards & Honors</h2>
-        
-        <div class="card card-content">
-            <h3>UNESCO Cultural Heritage Maker Competition — Best Concept Award</h3>
-            <p>UNESCO | For "Rhythm of Qinhuai River" Immersive Digital Exhibition<br>07/2024</p>
-        </div>
-
-        <div class="card card-content">
-            <h3>Guangzhou Museum Association "Online Curator" — Top 10 Exhibition</h3>
-            <p>Guangzhou Museum Association | For "Dad's Ocean Voyage" Exhibition<br>10/2025<br><strong>TOP 10</strong></p>
-        </div>
-
-        <div class="card card-content">
-            <h3>AdventureX 2026 — First Prize, Smart Youth Track</h3>
-            <p>AdventureX | For "InteractiMuse" Virtual Museum Project<br>07/2026<br><strong>First AdventureX 2026</strong></p>
-        </div>
-
-        <div class="card card-content">
-            <h3>AdventureX 2026 — Most Shareable Award, Sparkle Track</h3>
-            <p>AdventureX | For "InteractiMuse" Virtual Museum Project<br>07/2026<br><strong>AdventureX 2026</strong></p>
-        </div>
-
-        <div class="card card-content">
-            <h3>AdventureX 2026 — Web Application Excellence Award, PICO VR Track</h3>
-            <p>AdventureX | For "InteractiMuse" Virtual Museum Project<br>07/2026<br><strong>AdventureX 2026</strong></p>
-        </div>
-
-        <div class="card card-content">
-            <h3>Nanjing University of the Arts Outstanding Student Scholarship</h3>
-            <p>Nanjing University of the Arts<br>12/2025<br><img src="https://valoriaaaa.github.io/nua-logo.jpg" alt="NUA logo" style="height: 40px;"></p>
-        </div>
-
-        <div class="card card-content">
-            <h3>Nanjing University of the Arts Outstanding Student Scholarship</h3>
-            <p>Nanjing University of the Arts<br>12/2023<br><img src="https://valoriaaaa.github.io/nua-logo.jpg" alt="NUA logo" style="height: 40px;"></p>
-        </div>
-    </section>
-
-    <section id="professional">
-        <h2 class="section-title">Professional Experience</h2>
-        
-        <div class="card card-content">
-            <h3>Great Bao'en Story Center — Annual Digital Exhibition</h3>
-            <p><strong>Exhibition Curator & Cultural Heritage Consultant</strong><br>10/2024 – 12/2024</p>
-            <p>Served as Chief Planner and Copywriter for the annual digital exhibition at the Great Bao'en Story Center. Responsibilities included exhibit collection and provenance research, historical source verification, and providing professional cultural heritage consulting services for the exhibition design team. The project integrated digital storytelling techniques with rigorous historical scholarship to create an immersive visitor experience.</p>
-            <div class="painting-masonry">
-                <img src="https://valoriaaaa.github.io/baoen-pro-photo1.jpg" alt="Great Bao'en Story Center work" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/baoen-pro-photo2.jpg" alt="Great Bao'en Story Center event" onclick="openLightbox(this.src)">
-            </div>
-        </div>
-
-        <div class="card card-content">
-            <h3>Deji Art Museum</h3>
-            <p><strong>Operations Intern</strong><br>05/2023 – 05/2024</p>
-            <ul>
-                <li>Managed daily operations of permanent exhibitions, including visitor reception and gallery maintenance</li>
-                <li>Coordinated educational programs and community engagement activities for diverse audience groups</li>
-                <li>Designed and conducted visitor satisfaction surveys, analyzing quantitative and qualitative feedback to improve exhibition presentation</li>
-                <li>Developed promotional strategies and marketing plans to increase museum visibility and audience reach</li>
-                <li>Provided VIP guided tour services, offering in-depth interpretation of exhibition content and curatorial concepts</li>
-            </ul>
-            <img src="https://valoriaaaa.github.io/deji-photo1.jpg" alt="Deji Art Museum gallery tour" style="max-width: 100%; height: auto; margin: 10px 0;">
-        </div>
-    </section>
-
-    <section id="volunteer">
-        <h2 class="section-title">Volunteer Experience</h2>
-        
-        <div class="card card-content">
-            <h3>Nanjing Museum — Visitor Guide Volunteer</h3>
-            <p><strong>Gallery Guide & Education Assistant</strong></p>
-            <ul>
-                <li>Planned and implemented educational programs for museum visitors</li>
-                <li>Provided on-site support for major museum events and special exhibitions</li>
-                <li>Delivered visitor interpretation and guided tours of permanent and temporary exhibitions</li>
-                <li>Managed visitor reservations, reception, and guided tour services</li>
-            </ul>
-            <p>05/2023 – 12/2025</p>
-            <div class="painting-masonry">
-                <img src="https://valoriaaaa.github.io/nanjing-museum-vol1.jpg" alt="Nanjing Museum volunteer" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/nanjing-museum-vol2.jpg" alt="Nanjing Museum International Museum Day" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/nanjing-museum-vol3.jpg" alt="Nanjing Museum visitor guidance" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/nanjing-museum-vol4.jpg" alt="Nanjing Museum visitor interaction" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/nanjing-museum-vol5.jpg" alt="Nanjing Museum education program" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/nanjing-museum-vol6.jpg" alt="Nanjing Museum children's art workshop" onclick="openLightbox(this.src)">
-            </div>
-        </div>
-
-        <div class="card card-content">
-            <h3>Jiangsu Province Intellectual Property Youth Volunteer</h3>
-            <p><strong>Heritage Research Volunteer</strong></p>
-            <ul>
-                <li>Conducted field investigations and research on branded intangible cultural heritage in Nanjing</li>
-                <li>Studied the processes of intangible cultural heritage branding and commercialization</li>
-                <li>Planned and produced documentary films on intangible cultural heritage brands and craftsmanship</li>
-            </ul>
-            <p>10/2023 – 10/2024</p>
-        </div>
-    </section>
-
-    <section id="skills">
-        <h2 class="section-title">Skills</h2>
-        
-        <div class="card card-content">
-            <h3>Languages</h3>
-            <ul>
-                <li>Chinese: Native</li>
-                <li>English: C1 Proficient — advanced reading and writing, able to translate professional academic literature</li>
-            </ul>
-        </div>
-
-        <div class="card card-content">
-            <h3>Technical Skills</h3>
-            <p>WPS Office Suite Adobe Photoshop AutoCAD Academic Writing Ethnographic Methods Exhibition Design</p>
-        </div>
-
-        <div class="card card-content">
-            <h3>Painting</h3>
-            <div class="painting-masonry">
-                <img src="https://valoriaaaa.github.io/painting-1.jpg" alt="Painting 1" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/painting-2.jpg" alt="Painting 2" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/painting-3.jpg" alt="Painting 3" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/painting-4.jpg" alt="Painting 4" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/painting-5.jpg" alt="Painting 5" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/painting-6.jpg" alt="Painting 6" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/painting-7.jpg" alt="Painting 7" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/painting-8.jpg" alt="Painting 8" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/painting-9.jpg" alt="Painting 9" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/painting-11.jpg" alt="Painting 11" onclick="openLightbox(this.src)">
-                <img src="https://valoriaaaa.github.io/painting-10.jpg" alt="Painting 10" onclick="openLightbox(this.src)">
-            </div>
-        </div>
-    </section>
-
-</div>
-
-<footer>
-    <p>&copy; 2026 Yuxun Wang. All rights reserved.</p>
-    <p>Last Updated: September 2026</p>
-</footer>
-
-<div id="backToTop" onclick="scrollToTop()">↑</div>
-
-<div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
-    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-    <img id="lightbox-img" src="" alt="Full screen image">
-</div>
-
-<script>
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if(mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
         });
-    }
-    
-    const backToTopBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
+
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
-    });
 
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
 
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    function highlightNav() {
-        const scrollY = window.pageYOffset;
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
-            const sectionId = section.getAttribute('id');
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + sectionId) {
-                        link.classList.add('active');
-                    }
-                });
-            }
+        function highlightNav() {
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + sectionId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightNav);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
-    }
-    window.addEventListener('scroll', highlightNav);
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
 
     // Lazy load exhibition iframes to prevent content mixing between same-origin iframes
     const exhibitionObserver = new IntersectionObserver((entries) => {
@@ -561,6 +1450,7 @@
             }
         });
     }, { rootMargin: '300px' });
+
     document.querySelectorAll('iframe[data-original-url]').forEach(iframe => {
         exhibitionObserver.observe(iframe);
     });
@@ -588,29 +1478,34 @@
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
         const radius = rect.width / 2;
+        
         for (let i = 0; i < 8; i++) {
             setTimeout(() => {
                 const sparkle = document.createElement('span');
                 sparkle.className = 'sparkle';
                 sparkle.textContent = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
+                
                 const angle = (Math.PI * 2 * i) / 8;
                 const startX = centerX + radius * Math.cos(angle);
                 const startY = centerY + radius * Math.sin(angle);
                 const distance = 80 + Math.random() * 40;
                 const tx = Math.cos(angle) * distance;
                 const ty = Math.sin(angle) * distance;
+                
                 sparkle.style.left = (startX - 12) + 'px';
                 sparkle.style.top = (startY - 12) + 'px';
                 sparkle.style.setProperty('--tx', tx + 'px');
                 sparkle.style.setProperty('--ty', ty + 'px');
+                
                 document.body.appendChild(sparkle);
+                
                 setTimeout(() => {
                     sparkle.remove();
                 }, 1000);
             }, i * 50);
         }
     });
-</script>
 
+    </script>
 </body>
 </html>
