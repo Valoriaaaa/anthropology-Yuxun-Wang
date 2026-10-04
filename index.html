@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Yuxun Wang - PhD Applicant in Anthropology</title>
+<style>
+:root { --primary-blue: #4b5cc4; --bg-cream: #0a0a0a; --text-yellow: #fed81f; --accent-teal: #45C4BE; --bg-dark: #000000; --bg-card: #1a1a1a; --bg-card-hover: #242424; --text-primary: #ffffff; --text-secondary: #cccccc; }
+body { font-family: 'Times New Roman', Times, serif; background-color: var(--bg-dark); color: var(--text-primary); }
+h1, h2, h3, h4, h5, h6 { font-family: 'Times New Roman', Times, serif; }
+.nav-link { transition: all 0.3s ease; position: relative; }
+.nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background-color: var(--text-yellow); transition: width 0.3s ease; }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.nav-link.active { color: var(--text-yellow); }
+.section-title { position: relative; display: inline-block; padding-bottom: 12px; }
+.section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background-color: var(--accent-teal); }
+.timeline-item { position: relative; padding-left: 30px; border-left: 2px solid var(--accent-teal); }
+.timeline-item::before { content: ''; position: absolute; left: -8px; top: 0; width: 14px; height: 14px; border-radius: 50%; background-color: var(--accent-teal); border: 3px solid var(--bg-dark); }
+.tag { display: inline-block; padding: 6px 16px; margin: 4px; background-color: var(--primary-blue); color: white; border-radius: 20px; font-size: 0.9rem; transition: all 0.3s ease; }
+.tag:hover { background-color: var(--accent-teal); transform: translateY(-2px); }
+.card { background: var(--bg-card); border: 1px solid #2a2a2a; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; overflow: hidden; }
+.card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(69, 196, 190, 0.15); background: var(--bg-card-hover); border-color: #333; }
+.btn-primary { background-color: var(--primary-blue); color: white; padding: 10px 24px; border-radius: 6px; transition: all 0.3s ease; display: inline-block; text-decoration: none; }
+.btn-primary:hover { background-color: var(--accent-teal); transform: translateY(-2px); }
+#backToTop { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background-color: var(--primary-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1000; box-shadow: 0 4px 12px rgba(75, 92, 196, 0.4); }
+#backToTop.visible { opacity: 1; visibility: visible; }
+#backToTop:hover { background-color: var(--accent-teal); transform: translateY(-3px); }
+.placeholder-img { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px dashed #555; display: flex; align-items: center; justify-content: center; color: #888; font-style: italic; }
+html { scroll-behavior: smooth; }
+.mobile-menu { display: none; }
+@media (max-width: 768px) { .mobile-menu { display: block; } .desktop-menu { display: none; } }
+.pdf-container { width: 100%; height: 500px; border: 1px solid #333; border-radius: 8px; overflow: hidden; }
+.exhibition-container { width: 100%; height: 450px; border: 1px solid #333; border-radius: 8px; overflow: hidden; }
+.hero-gradient { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); }
+.painting-masonry { column-count: 4; column-gap: 12px; }
+@media (max-width: 1024px) { .painting-masonry { column-count: 3; } }
+@media (max-width: 640px) { .painting-masonry { column-count: 2; } }
+.painting-masonry img { width: 100%; height: auto; display: block; margin-bottom: 12px; border-radius: 8px; border: 1px solid #2a2a2a; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.painting-masonry img:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(69, 196, 190, 0.2); z-index: 1; position: relative; }
+.lightbox-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0, 0, 0, 0.92); align-items: center; justify-content: center; cursor: pointer; }
+.lightbox-overlay.active { display: flex; }
+.lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 0 40px rgba(0,0,0,0.6); }
+.lightbox-close { position: fixed; top: 20px; right: 28px; z-index: 10000; color: #fff; font-size: 2rem; cursor: pointer; background: none; border: none; line-height: 1; }
+#profile-photo { position: relative; transition: all 0.3s ease; }
+#profile-photo:hover { box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 0 60px rgba(69, 196, 190, 0.4); transform: scale(1.05); }
+.sparkle { position: absolute; font-size: 24px; pointer-events: none; animation: sparkle-fly 1s ease-out forwards; z-index: 100; }
+@keyframes sparkle-fly { 0% { opacity: 1; transform: translate(0, 0) scale(0) rotate(0deg); } 50% { opacity: 1; transform: translate(var(--tx), var(--ty)) scale(1) rotate(180deg); } 100% { opacity: 0; transform: translate(calc(var(--tx) * 2), calc(var(--ty) * 2)) scale(0.5) rotate(360deg); } }
+#phd-title { position: relative; display: inline-block; cursor: pointer; transition: all 0.3s ease; }
+#phd-title:hover { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+.title-emoji { position: absolute; font-size: 28px; pointer-events: none; opacity: 0; transition: all 0.4s ease; right: -60px; }
+.title-emoji.museum { top: -10px; transition-delay: 0s; }
+.title-emoji.book { bottom: -10px; transition-delay: 0.1s; }
+#phd-title:hover .title-emoji { opacity: 1; right: -50px; }
+#hero-name { position: relative; display: inline-block; cursor: pointer; }
+.name-emoji { position: absolute; font-size: 40px; pointer-events: none; opacity: 0; transition: all 0.4s ease; right: -60px; top: 50%; transform: translateY(-50%); }
+#hero-name:hover .name-emoji { opacity: 1; right: -55px; animation: wave-hand 0.6s ease-in-out infinite alternate; }
+@keyframes wave-hand { 0% { transform: translateY(-50%) rotate(0deg); } 100% { transform: translateY(-50%) rotate(20deg); } }
+</style>
+</head>
+<body>
+<nav class="desktop-menu">
+<a href="#home" class="nav-link active">[Yuxun Wang]</a>
+<a href="#education" class="nav-link">Education</a>
+<a href="#research-interests" class="nav-link">Research Interests</a>
+<a href="#doctoral-research" class="nav-link">Doctoral Agenda</a>
+<a href="#publications" class="nav-link">Publications</a>
+<a href="#research-experience" class="nav-link">Research Experience</a>
+<a href="#curatorial" class="nav-link">Curatorial</a>
+<a href="#awards" class="nav-link">Awards</a>
+<a href="#professional" class="nav-link">Professional</a>
+<a href="#volunteer" class="nav-link">Volunteer</a>
+<a href="#skills" class="nav-link">Skills</a>
+</nav>
+
+<header id="home">
+<h1 id="hero-name">Yuxun Wang<span class="name-emoji">👋</span></h1>
+<h2 id="phd-title">PhD Applicant in Anthropology<span class="title-emoji museum">🏛️</span><span class="title-emoji book">📚</span></h2>
+<p>A scholar and curator whose research and practice focus on Anthropology, heritage studies, and community-based curatorial practices in museum contexts.</p>
+<p><a href="mailto:kacowang@outlook.com">kacowang@outlook.com</a> | +86 13372009544<br>No. 74, Beijing West Road, Gulou, Nanjing, Jiangsu Province, China</p>
+<div id="profile-photo"><img src="https://valoriaaaa.github.io/photo_hero.jpg" alt="Yuxun Wang"></div>
+</header>
+
+<section id="education">
+<h2 class="section-title">Education</h2>
+<h3>Nanjing University of the Arts, China</h3>
+<p>Bachelor of Arts in Cultural Heritage Science<br>Minor: Fine Arts (Cultural Heritage Science)<br>09/2022 – 06/2026<br>GPA: 88/100 (Top 10% in major ranking)</p>
+<h4>Key Undergraduate Courses:</h4>
+<ul>
+<li>Museum Management</li>
+<li>Cultural Heritage Exhibition Planning</li>
+<li>Cultural Heritage Exhibition Design</li>
+<li>History of Chinese Arts and Crafts</li>
+<li>Cultural Arts Laws and Regulations</li>
+<li>Ancient Chinese Architecture History</li>
+<li>Cultural Heritage Conservation Materials</li>
+<li>Art Archaeology</li>
+<li>History and Theory of Cultural Heritage Protection</li>
+<li>Folklore</li>
+<li>Field Research Methods</li>
+<li>Field Survey Practice</li>
+</ul>
+<h4>Nanjing Folk Custom Museum and Nanjing Art Institute Cooperative Course</h4>
+<h5>Nanjing University of the Arts & Nanjing Folk Custom Museum</h5>
+<h6>Course Content</h6>
+<ul>
+<li>Master Class on Intangible Cultural Heritage (ICH) Craftsmanship Research and Inheritance</li>
+<li>Research on the Current Status of ICH Inheritance and Field Interviews</li>
+<li>Mechanism of Museum Operation and Practice of Study-Travel Programs</li>
+<li>Museum Public Services and Volunteer Practice</li>
+<li>Management and Leadership Studies of Cultural Heritage Institutions</li>
+</ul>
+<h6>My Reflections and Insights</h6>
+<h7>Architectural Preservation Challenges</h7>
+<p>As a cultural heritage site of historic residential architecture, the museum faces preservation challenges posed by the influx of large-scale study-travel participants.</p>
+<h7>ICH Transmission Dilemmas</h7>
+<p>Core intangible cultural heritage (ICH) craftsmanship is difficult to effectively transfer to younger study-travel groups through short-term programs. One-off experiential activities lack constructive value for both children's meaningful engagement and the sustainable development of ICH. Balancing the demand for recreational study-travel experiences with the need for in-depth ICH dissemination remains a long-term research topic.</p>
+<h7>Community-Museum Relationships</h7>
+<p>The dynamic between local communities and the museum requires further exploration; an equitable and mutually beneficial interactive mechanism should be established.</p>
+<h7>Institutional Management Reflections</h7>
+<p>The director's "governance through non-interference" approach embodies certain wisdom, yet it places excessively high demands on individual managerial competence. Thus, more stable and replicable management frameworks warrant exploration.</p>
+<div class="painting-masonry">
+<img src="https://valoriaaaa.github.io/folk-museum-course1.jpg" alt="Nanjing Folk Custom Museum joint training course - paper-cut artwork">
+<img src="https://valoriaaaa.github.io/folk-museum-course2.jpg" alt="Nanjing Folk Custom Museum joint training course - volunteers teaching children">
+<img src="https://valoriaaaa.github.io/folk-museum-course3.jpg" alt="Nanjing Folk Custom Museum joint training course - embroidery work">
+<img src="https://valoriaaaa.github.io/folk-museum-course4.jpg" alt="Nanjing Folk Custom Museum joint training course - face painting drawings">
+<img src="https://valoriaaaa.github.io/folk-museum-course5.jpg" alt="Nanjing Folk Custom Museum joint training course - museum garden">
+</div>
+</section>
+
+<section id="research-interests">
+<h2 class="section-title">Research Interests</h2>
+<h3>Keywords</h3>
+<p>Information Science Digitization of Community Archives Digitization of Cultural Heritage Heritage Studies Community Engagement in Archiving Museology Museum Curation</p>
+<h3>Description</h3>
+<p>My research interests are anchored in three interconnected domains: Information Science, heritage studies, and museology. Within Information Science, I am interested in how archival institutional mechanisms (such as acquisition, description, classification, and collection) accommodate and simultaneously reshape context-specific, embodied community memories when they enter institutional archival systems through participatory archiving practices. Does this process achieve archival justice, or does it reproduce archival injustice? In heritage studies, I examine the politics of intangible cultural heritage (ICH) documentation and how community-led conservation practices challenge top-down, state-centric models of heritage designation. In museology, I conceptualize curatorial practice as a mediating form of knowledge production, analyzing how exhibition design, object classification systems, and interpretive frameworks encode institutional power relations within cultural institutions.</p>
+</section>
+
+<section id="doctoral-research">
+<h2 class="section-title">Doctoral Research Agenda</h2>
+<h3>The Metadatafication of Oral History in Participatory Interpretation: A Study on Museum Selection, Description, and Representation Mechanisms</h3>
+<h4>Core Questions</h4>
+<p>This study examines participatory interpretation initiatives in museums situated within place-based communities, with oral history serving as the primary case study to represent community voices. The central inquiry concerns the museum's curation of oral narratives contributed by both residents and visitors. Specifically, it investigates the mechanisms through which community voices are mediated, filtered, or modified within institutional archives.</p>
+<p>The research addresses three key questions:</p>
+<ul>
+<li>What elements of oral history are subject to selection or alteration?</li>
+<li>Why are these interventions undertaken?</li>
+<li>How do various structural factors and stakeholder dynamics shape this process?</li>
+</ul>
+</section>
+
+<section id="publications">
+<h2 class="section-title">Publications</h2>
+<h3>Exploration of Cultural Heritage Interpretation Pathways from the Perspective of Participatory Development Theory — A Case Study of Nanjing's "Digital Heritage" Project</h3>
+<p><strong>Yuxun Wang</strong> (First Author) 2026 (Forthcoming) 3rd Forum on Cultural Heritage and Social Development, Zhejiang University</p>
+<h4>Abstract</h4>
+<p>The introduction of innovative change in the interpretation practices in museums is essential in cultural heritage institutions to deliver the cultural heritage in an effective manner and fulfill the social value of cultural heritage. Another benefit of exploring new methods of heritage interpretation is that it not only responds to the needs of the public to be engaged in cultural activities but encourages new forms of interpretation. Basing on the outlook of the participatory development theory, the given study incorporates its main idea, the ability to turn the passive receivers into the active creators, in the examination of the cultural heritage interpretation routes. The research with the help of case analysis suggests a three-phase model of participatory interpretation, which presents a theoretically based and practically used framework of innovation of the cultural heritage interpretation techniques. The study targets the role of the multi-stakeholder intervention in supporting the shift of heritage interpretation towards sharing process rather than delivering outcomes. A hybrid approach of participatory inquiry and case study was taken, and an intensive two-year follow-up study of the project of Digital Heritage on the Nanjing Great Bao'en Temple Site Museum was performed. The results show that the participatory development theory offers a fundamental rationale of mutual interpretive engagements in cultural heritage which highlight the transition of closed functioning towards gradual openness to the populace as well as the maintenance of the quality of interpretation by moderate delegation of cultural authority. This method provides a radical model between theory and practice of innovation in heritage interpretation.</p>
+<h4>Introduction</h4>
+<p>I initiated research on this museum project in 2024, independently designing its research framework and methodology, which ultimately formed the basis of my undergraduate thesis. Over a two-year longitudinal study, I engaged in participant observation through three overlapping roles—contestant, curator, and event staff—while collecting extensive primary data via questionnaires and semi-structured in-depth interviews with audiences and internal personnel. This empirical evidence underpinned the development of my final interpretive model.</p>
+<p>This research systematically analyzes how multi-stakeholder engagement at distinct stages of museum object interpretation catalyzes the excavation of the objects' multi-layered meanings, and proposes a three-stage participatory interpretation model. The model posits that, within the context of cultural institutions (e.g., museums) retaining interpretive sovereignty, museum object interpretation remains a closed process for the public. This closure situates visitors in an "absent context" between the interpretive process and the exhibited display, leading to the erosion of partial cultural agency. To address this impasse, the model centers on the logic of shared interpretive processes, emphasizing a shift from closure to openness and from one-way transmission to community co-creation. It argues that diverse communities can intervene at different stages of the interpretive process, thereby mitigating the absent context.</p>
+<p>This experience has solidified my commitment to advancing scholarship in museum anthropology. Doctoral studies will afford me the sustained, coherent timeframe necessary to systematically investigate the topics that both perplex and captivate me.</p>
+<h4>Paper Structure</h4>
+<img src="https://valoriaaaa.github.io/Exploration of Cultural Heritage Interpretation Pathways.png" alt="Paper 1 structure diagram">
+<h4>Key Outcomes</h4>
+<img src="https://valoriaaaa.github.io/paper1-key-outcomes.jpg" alt="Paper 1 key outcomes diagram">
+<p><strong>Dynamic Three-Stage Model for Cultural Heritage Interpretation</strong></p>
+<p>This study constructs a dynamic three-stage model for cultural heritage interpretation oriented toward <strong>open cultural rights</strong>. The theoretical model draws on two foundational frameworks:</p>
+<ul>
+<li><strong>Jelka Pirković's General Model of Heritage Interpretation</strong> — emphasizes the co-participation of memory, values, and knowledge as core drivers of interpretation.</li>
+<li><strong>Tolkach et al.'s Community-Centered Heritage Sustainability Model</strong> — advocates for community-led sustainable heritage management enabled by multidimensional empowerment.</li>
+</ul>
+<p>The model conceptualizes interpretation as an interpenetrating dynamic system of three interdependent stages:</p>
+<ol>
+<li><strong>Pre-interpretation:</strong> Aggregation of interpretive resources mediated by the community — community actors curate and mobilize local heritage resources as the basis for interpretation.</li>
+<li><strong>In-interpretation:</strong> Translation of interpretive materials by participants — participants recontextualize and transform heritage content into accessible, contextually relevant forms.</li>
+<li><strong>Post-interpretation:</strong> Evaluation of interpretive outcomes by internal experts and external audiences — dual-stakeholder feedback validates the accuracy, relevance, and impact of interpretation.</li>
+</ol>
+<p>These stages form a <strong>closed-loop system</strong> through empowerment mechanisms, driving continuous reconstruction and renewal of heritage meanings among diverse stakeholders.</p>
+<p><strong>Empirical findings:</strong> The model effectively enhances the public's emotional connection to heritage and cultivates a sense of ownership.</p>
+<p><strong>Three key challenges:</strong> (1) insufficient participation sustainability; (2) ambiguous boundaries of power devolution; (3) absence of long-term impact assessment.</p>
+
+<h3>Exploring Innovative Development Pathways for Small and Medium-Sized Museums from the Perspective of Youth Co-Creation — A Practice Study Based on International Competitions</h3>
+<img src="https://valoriaaaa.github.io/paper2-photo.jpg" alt="ICOM Jiangsu presentation">
+<p><strong>Yuxun Wang</strong> 2025 2025 International Museum Day Youth Academic Forum (ICOM Jiangsu)</p>
+<h4>Abstract</h4>
+<p>Against the backdrop of rapid social transformation and development, museums are confronting unprecedented opportunities and challenges. As a critical component of the museum ecosystem, small and medium-sized museums (SMMs) are also grappling with multiple predicaments, including limited collections, suboptimal exhibition quality, and a scarcity of professional curatorial talent. Addressing these issues has emerged as a top priority in contemporary museum practice.</p>
+<p>Youth groups, as the core driving force behind social change, hold central significance for alleviating the dilemmas faced by SMMs—researching youth communities and gaining insights into their thoughts and needs is therefore academically and practically imperative. Thus, implementing the concept of youth co-creation in museums has become a pivotal strategy for museum development. Youth co-creation encompasses diverse pathways, such as museum-school partnerships, competition organization, and volunteer recruitment. However, there remains untapped potential in the development of museum-centric competitions.</p>
+<p>Drawing on the author's first-hand participation in China's inaugural international museum competition, Eternal Heritage: Immersive Cultural Heritage Maker Challenge, this study adopts a participatory observation approach to examine how such events, under the framework of youth co-creation, facilitate the construction of interdisciplinary teams, expand international perspectives, integrate cutting-edge technologies, and embed authentic youth viewpoints. Concurrently, these competitions provide platforms and opportunities for youth development, fostering a mutually reinforcing virtuous cycle that offers novel insights into resolving the current predicaments of SMMs.</p>
+<p>The study concludes that international museum competitions effectively drive youth engagement in museum co-creation, serving as a viable and effective pathway to address the challenges faced by SMMs. This approach is therefore worthy of broader promotion and practical application in the SMM sector.</p>
+</section>
+
+<section id="research-experience">
+<h2 class="section-title">Research Experience</h2>
+<h3>Boyi Online Academic Platform</h3>
+<p><strong>Academic Columnist</strong><br>01/2026 – Present</p>
+<ul>
+<li>Author monthly columns focusing on cutting-edge academic achievements in museum and heritage studies</li>
+<li>Conduct systematic literature searches on museum and heritage research, performing critical analysis of emerging trends and methodologies</li>
+<li>Translate and analyze English-language papers published by Chinese scholars overseas, organizing them into accessible Chinese articles for domestic practitioners and researchers</li>
+<li>Produce in-depth commentaries on topics including authorized heritage discourse, digital narrative in museums, and participatory development in cultural heritage</li>
+</ul>
+
+<h3>Great Bao'en Temple Heritage Museum</h3>
+<p><strong>International Communication Assistant</strong><br>05/2025 – 08/2025</p>
+<ul>
+<li>Conducted archival research and investigated historical exhibition materials to support the museum's annual exhibition program and permanent collection management</li>
+<li>Planned and executed community education programs for International Museum Day, applying participatory development theories to foster grassroots involvement in heritage interpretation</li>
+<li>Coordinated international exchange projects, facilitating cross-cultural communication between the museum and partner institutions abroad</li>
+<li>Designed and administered visitor satisfaction surveys, collecting quantitative and qualitative data to evaluate curatorial effectiveness and inform institutional decision-making</li>
+</ul>
+<div class="painting-masonry">
+<img src="https://valoriaaaa.github.io/baoen-photo1.jpg" alt="Great Bao'en Temple Heritage Museum exhibition">
+<img src="https://valoriaaaa.github.io/baoen-photo2.jpg" alt="Great Bao'en Temple Heritage Museum team">
+<img src="https://valoriaaaa.github.io/baoen-photo3.jpg" alt="Great Bao'en Temple Heritage Museum tour">
+</div>
+
+<h3>UNESCO Cultural Heritage Conservation Initiative</h3>
+<p><strong>Volunteer Researcher & Educator</strong><br>Tongdao County, Hunan Province<br>08/2023</p>
+<ul>
+<li>Conducted ethnographic fieldwork on Dong ethnic cultural heritage and produced folklore research reports</li>
+<li>Developed intangible cultural heritage woodcarving craft course curriculum for community education</li>
+<li>Produced documentary film "Mo Shi" (The Ink Master) documenting intangible cultural heritage inheritors</li>
+<li>Designed and installed Dong ethnic cultural digital art exhibition and curated cultural landscape photography exhibition</li>
+</ul>
+<div class="painting-masonry">
+<img src="https://valoriaaaa.github.io/fieldwork-photo1.jpg" alt="Dong Village landscape">
+<img src="https://valoriaaaa.github.io/fieldwork-photo2.jpg" alt="Dong Village panorama">
+<img src="https://valoriaaaa.github.io/fieldwork-photo3.jpg" alt="Dong Village stone bridge">
+</div>
+</section>
+
+<section id="curatorial">
+<h2 class="section-title">Curatorial Projects</h2>
+<h3>Dad's Ocean Voyage — Guangdong Overseas Workers Story Exhibition</h3>
+<p><strong>Chief Curator</strong><br>2025 "Online Curator" Competition — Top 10 Exhibition<br>2025</p>
+<p>Served as Chief Curator for this exhibition telling the stories of Guangdong overseas Chinese workers (Huaqiao). The project was selected as one of the Top 10 exhibitions in the 2025 "Online Curator" national competition, demonstrating innovative approaches to diaspora heritage interpretation through digital storytelling and community-engaged research methods.</p>
+<h4>Online Exhibition</h4>
+<p>Your browser does not support iframes. <a href="https://www.jiyi.show/fr/#/exhibition/692364522864709/home" target="_blank">View the exhibition</a>.</p>
+<p><a href="https://www.jiyi.show/fr/#/exhibition/692364522864709/home" target="_blank">View Full Exhibition</a> 💡 This exhibition is currently available in Chinese only — we sincerely apologize for the inconvenience. To view it in English, you may click the exhibition link and use your browser's built-in translation feature. Thank you so much for your understanding!</p>
+
+<h3>Lacquer East Fantasy: Louis's Banquet — Guangzhou Export Lacquerware Special Exhibition</h3>
+<p><strong>Chief Curator</strong><br>2025</p>
+<p>Chief Curator of this special exhibition exploring the history of Guangzhou-made export lacquerware (Guangzuo) and its role in cross-cultural exchange between China and the West. The exhibition traces the journey of Chinese lacquerware along maritime trade routes, examining how these objects served as vehicles of cultural diplomacy and artistic innovation in the 18th and 19th centuries.</p>
+<h4>Online Exhibition</h4>
+<p>Your browser does not support iframes. <a href="https://www.jiyi.show/fr/#/exhibition/791079308472389/home" target="_blank">View the exhibition</a>.</p>
+<p><a href="https://www.jiyi.show/fr/#/exhibition/791079308472389/home" target="_blank">View Full Exhibition</a> 💡 This exhibition is currently available in Chinese only — we sincerely apologize for the inconvenience. To view it in English, you may click the exhibition link and use your browser's built-in translation feature. Thank you so much for your understanding!</p>
+
+<h3>Grandma, the Unseen Half-Life Across the Ocean: An Online Story Exhibition of Women from Overseas Chinese Villages</h3>
+<p><strong>Co-Curator</strong><br>2025</p>
+<p>An online story exhibition documenting the lived experiences of women in overseas Chinese villages, centering their often-overlooked narratives within the broader history of diaspora and migration. The project brings visibility to the "unseen half" of the overseas Chinese story through community-sourced oral histories, archival materials, and digital storytelling.</p>
+<h4>Online Exhibition</h4>
+<p>Your browser does not support iframes. <a href="https://www.jiyi.show/fr/#/exhibition/777917928063045/home" target="_blank">View the exhibition</a>.</p>
+<p><a href="https://www.jiyi.show/fr/#/exhibition/777917928063045/home" target="_blank">View Full Exhibition</a> 💡 This exhibition is currently available in Chinese only — we sincerely apologize for the inconvenience. To view it in English, you may click the exhibition link and use your browser's built-in translation feature. Thank you so much for your understanding!</p>
+
+<h3>Rhythm of Qinhuai River — Immersive Digital Exhibition</h3>
+<p><strong>Curator & Designer</strong><br>2024 UNESCO Digital Heritage — Best Concept Award<br>2024</p>
+<p>An immersive digital exhibition project that won the Best Concept Award at the 2024 UNESCO Cultural Heritage Maker Competition. The project explores the cultural landscape of the Qinhuai River in Nanjing through digital heritage technologies, combining historical research with interactive digital design to create an immersive experience that bridges traditional cultural narratives with contemporary digital expression.</p>
+<h4>Project Portfolio</h4>
+<p>Your browser does not support PDFs. <a href="https://valoriaaaa.github.io/Curatorial_WorksCollection_Yuxun_Wang.pdf">Download the PDF</a>.</p>
+<p><a href="https://valoriaaaa.github.io/Curatorial_WorksCollection_Yuxun_Wang.pdf">Download Portfolio PDF</a></p>
+
+<h3>InteractiMuse — Virtual Museum Website</h3>
+<p><strong>AdventureX 2026 Competition — Award-Winning Project</strong><br>Role: Creative Narrative & Visual Designer<br>2026</p>
+<p>A virtual museum website project that won awards across three tracks at AdventureX 2026: First Prize (Smart Youth Track), Most Shareable Award (Sparkle Track), and Web Application Excellence Award (PICO VR Track). The project explores creative narrative and visual design approaches for virtual museum experiences, integrating interactive storytelling with immersive web technologies.</p>
+<h4>Introduction:</h4>
+<p>InteractiMuse is an online virtual museum designed explicitly for children, grounded in the theoretical framework of embodied learning. It integrates immersive interactive experiences with virtual exhibitions and hands-on tasks to facilitate knowledge exploration and deep conceptual understanding. This platform aims to expand the boundaries of virtual museum design by reconfiguring the paradigm of deep learning in museum contexts through the lens of embodied cognition.</p>
+<p>Existing offline participatory learning museums fail to deliver fully immersive learning scenarios, as physical exhibition spaces are often constrained by environmental distractions and structural limitations. In contrast, conventional online museums merely transpose offline content into two-dimensional digital formats, lacking dynamic engagement. To address these gaps, InteractiMuse constructs a one-to-one immersive experience interface between users and digital displays. By designing learning-oriented game modules with lightweight accessibility, it makes educational museum experiences accessible to children in diverse settings.</p>
+<p>InteractiMuse decomposes complex cultural heritage knowledge into modular, age-appropriate game tasks, while simultaneously fostering children's hand-eye coordination—thus mitigating the prevalent limitation of unidirectional engagement in existing virtual museums. Currently targeted at children aged 6–14, the platform is tailored for family learning contexts, addressing the core challenge that children often struggle with effective learning in traditional museums due to insufficient foundational knowledge of unfamiliar cultural artifacts. Through interactions with InteractiMuse, children not only acquire cultural heritage knowledge but also refine motor skills (e.g., hand-eye coordination), thereby constructing a bodily action-based deep engagement experience that aligns with embodied learning principles.</p>
+<img src="https://valoriaaaa.github.io/interactimuse-cover.png" alt="InteractiMuse — Virtual Museum Website">
+<h4>Awards:</h4>
+<p>First Prize — Smart Youth Track<br>Most Shareable — Sparkle Track<br>Web App Excellence — PICO VR Track</p>
+<p><a href="https://interactimuse.netlify.app/">View Project</a> This project page is currently in Chinese. We appreciate your understanding!</p>
+<h4>How to Interact</h4>
+<p><strong>Rotate</strong> — Move hand to rotate<br><strong>Zoom</strong> — Open/close hands<br><strong>Explore</strong> — Point with index finger<br><strong>Select</strong> — Make a fist<br><strong>Reset</strong> — Peace sign ✌️<br><strong>Mouse</strong> — Also supported</p>
+</section>
+
+<section id="awards">
+<h2 class="section-title">Awards & Honors</h2>
+<h3>UNESCO Cultural Heritage Maker Competition — Best Concept Award</h3>
+<p>UNESCO | For "Rhythm of Qinhuai River" Immersive Digital Exhibition<br>07/2024</p>
+<h3>Guangzhou Museum Association "Online Curator" — Top 10 Exhibition</h3>
+<p>Guangzhou Museum Association | For "Dad's Ocean Voyage" Exhibition<br>10/2025<br><strong>TOP 10</strong></p>
+<h3>AdventureX 2026 — First Prize, Smart Youth Track</h3>
+<p>AdventureX | For "InteractiMuse" Virtual Museum Project<br>07/2026<br>First AdventureX 2026</p>
+<h3>AdventureX 2026 — Most Shareable Award, Sparkle Track</h3>
+<p>AdventureX | For "InteractiMuse" Virtual Museum Project<br>07/2026<br>AdventureX 2026</p>
+<h3>AdventureX 2026 — Web Application Excellence Award, PICO VR Track</h3>
+<p>AdventureX | For "InteractiMuse" Virtual Museum Project<br>07/2026<br>AdventureX 2026</p>
+<h3>Nanjing University of the Arts Outstanding Student Scholarship</h3>
+<p>Nanjing University of the Arts<br>12/2025<br><img src="https://valoriaaaa.github.io/nua-logo.jpg" alt="NUA logo"></p>
+<h3>Nanjing University of the Arts Outstanding Student Scholarship</h3>
+<p>Nanjing University of the Arts<br>12/2023<br><img src="https://valoriaaaa.github.io/nua-logo.jpg" alt="NUA logo"></p>
+</section>
+
+<section id="professional">
+<h2 class="section-title">Professional Experience</h2>
+<h3>Great Bao'en Story Center — Annual Digital Exhibition</h3>
+<p><strong>Exhibition Curator & Cultural Heritage Consultant</strong><br>10/2024 – 12/2024</p>
+<p>Served as Chief Planner and Copywriter for the annual digital exhibition at the Great Bao'en Story Center. Responsibilities included exhibit collection and provenance research, historical source verification, and providing professional cultural heritage consulting services for the exhibition design team. The project integrated digital storytelling techniques with rigorous historical scholarship to create an immersive visitor experience.</p>
+<div class="painting-masonry">
+<img src="https://valoriaaaa.github.io/baoen-pro-photo1.jpg" alt="Great Bao'en Story Center work">
+<img src="https://valoriaaaa.github.io/baoen-pro-photo2.jpg" alt="Great Bao'en Story Center event">
+</div>
+
+<h3>Deji Art Museum</h3>
+<p><strong>Operations Intern</strong><br>05/2023 – 05/2024</p>
+<ul>
+<li>Managed daily operations of permanent exhibitions, including visitor reception and gallery maintenance</li>
+<li>Coordinated educational programs and community engagement activities for diverse audience groups</li>
+<li>Designed and conducted visitor satisfaction surveys, analyzing quantitative and qualitative feedback to improve exhibition presentation</li>
+<li>Developed promotional strategies and marketing plans to increase museum visibility and audience reach</li>
+<li>Provided VIP guided tour services, offering in-depth interpretation of exhibition content and curatorial concepts</li>
+</ul>
+<img src="https://valoriaaaa.github.io/deji-photo1.jpg" alt="Deji Art Museum gallery tour">
+</section>
+
+<section id="volunteer">
+<h2 class="section-title">Volunteer Experience</h2>
+<h3>Nanjing Museum — Visitor Guide Volunteer</h3>
+<p><strong>Gallery Guide & Education Assistant</strong></p>
+<ul>
+<li>Planned and implemented educational programs for museum visitors</li>
+<li>Provided on-site support for major museum events and special exhibitions</li>
+<li>Delivered visitor interpretation and guided tours of permanent and temporary exhibitions</li>
+<li>Managed visitor reservations, reception, and guided tour services</li>
+</ul>
+<p>05/2023 – 12/2025</p>
+<div class="painting-masonry">
+<img src="https://valoriaaaa.github.io/nanjing-museum-vol1.jpg" alt="Nanjing Museum volunteer">
+<img src="https://valoriaaaa.github.io/nanjing-museum-vol2.jpg" alt="Nanjing Museum International Museum Day">
+<img src="https://valoriaaaa.github.io/nanjing-museum-vol3.jpg" alt="Nanjing Museum visitor guidance">
+<img src="https://valoriaaaa.github.io/nanjing-museum-vol4.jpg" alt="Nanjing Museum visitor interaction">
+<img src="https://valoriaaaa.github.io/nanjing-museum-vol5.jpg" alt="Nanjing Museum education program">
+<img src="https://valoriaaaa.github.io/nanjing-museum-vol6.jpg" alt="Nanjing Museum children's art workshop">
+</div>
+
+<h3>Jiangsu Province Intellectual Property Youth Volunteer</h3>
+<p><strong>Heritage Research Volunteer</strong></p>
+<ul>
+<li>Conducted field investigations and research on branded intangible cultural heritage in Nanjing</li>
+<li>Studied the processes of intangible cultural heritage branding and commercialization</li>
+<li>Planned and produced documentary films on intangible cultural heritage brands and craftsmanship</li>
+</ul>
+<p>10/2023 – 10/2024</p>
+</section>
+
+<section id="skills">
+<h2 class="section-title">Skills</h2>
+<h3>Languages</h3>
+<ul>
+<li>Chinese: Native</li>
+<li>English: C1 Proficient — advanced reading and writing, able to translate professional academic literature</li>
+</ul>
+<h3>Technical Skills</h3>
+<p>WPS Office Suite Adobe Photoshop AutoCAD Academic Writing Ethnographic Methods Exhibition Design</p>
+<h3>Painting</h3>
+<div class="painting-masonry">
+<img src="https://valoriaaaa.github.io/painting-1.jpg" alt="Painting 1">
+<img src="https://valoriaaaa.github.io/painting-2.jpg" alt="Painting 2">
+<img src="https://valoriaaaa.github.io/painting-3.jpg" alt="Painting 3">
+<img src="https://valoriaaaa.github.io/painting-4.jpg" alt="Painting 4">
+<img src="https://valoriaaaa.github.io/painting-5.jpg" alt="Painting 5">
+<img src="https://valoriaaaa.github.io/painting-6.jpg" alt="Painting 6">
+<img src="https://valoriaaaa.github.io/painting-7.jpg" alt="Painting 7">
+<img src="https://valoriaaaa.github.io/painting-8.jpg" alt="Painting 8">
+<img src="https://valoriaaaa.github.io/painting-9.jpg" alt="Painting 9">
+<img src="https://valoriaaaa.github.io/painting-11.jpg" alt="Painting 11">
+<img src="https://valoriaaaa.github.io/painting-10.jpg" alt="Painting 10">
+</div>
+</section>
+
+<footer>
+<p>&times;</p>
+<p>© 2026 Yuxun Wang. All rights reserved.<br>Last Updated: September 2026</p>
+</footer>
+
+<div id="backToTop" onclick="scrollToTop()">↑</div>
+<div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+<button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+<img id="lightbox-img" src="" alt="Lightbox Image">
+</div>
+
+<script>
+const mobileMenuBtn = document.getElementById('mobileMenuBtn'); const mobileMenu = document.getElementById('mobileMenu'); mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); const mobileLinks = mobileMenu.querySelectorAll('a'); mobileLinks.forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); }); const backToTopBtn = document.getElementById('backToTop'); window.addEventListener('scroll', () => { if (window.pageYOffset > 300) { backToTopBtn.classList.add('visible'); } else { backToTopBtn.classList.remove('visible'); } }); function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); } const sections = document.querySelectorAll('section[id]'); const navLinks = document.querySelectorAll('.nav-link'); function highlightNav() { const scrollY = window.pageYOffset; sections.forEach(section => { const sectionHeight = section.offsetHeight; const sectionTop = section.offsetTop - 100; const sectionId = section.getAttribute('id'); if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) { navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + sectionId) { link.classList.add('active'); } }); } }); } window.addEventListener('scroll', highlightNav); document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); }); // Lazy load exhibition iframes to prevent content mixing between same-origin iframes const exhibitionObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { const iframe = entry.target; const url = iframe.getAttribute('data-original-url'); if (url && !iframe.getAttribute('src')) { iframe.setAttribute('src', url); } exhibitionObserver.unobserve(iframe); } }); }, { rootMargin: '300px' }); document.querySelectorAll('iframe[data-original-url]').forEach(iframe => { exhibitionObserver.observe(iframe); }); function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; } function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; } document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); }); const profilePhoto = document.getElementById('profile-photo'); const sparkleEmojis = ['✨', '⭐', '🌟', '💫']; profilePhoto.addEventListener('mouseenter', function(e) { const rect = this.getBoundingClientRect(); const centerX = rect.left + rect.width / 2; const centerY = rect.top + rect.height / 2; const radius = rect.width / 2; for (let i = 0; i < 8; i++) { setTimeout(() => { const sparkle = document.createElement('span'); sparkle.className = 'sparkle'; sparkle.textContent = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)]; const angle = (Math.PI * 2 * i) / 8; const startX = centerX + radius * Math.cos(angle); const startY = centerY + radius * Math.sin(angle); const distance = 80 + Math.random() * 40; const tx = Math.cos(angle) * distance; const ty = Math.sin(angle) * distance; sparkle.style.left = (startX - 12) + 'px'; sparkle.style.top = (startY - 12) + 'px'; sparkle.style.setProperty('--tx', tx + 'px'); sparkle.style.setProperty('--ty', ty + 'px'); document.body.appendChild(sparkle); setTimeout(() => { sparkle.remove(); }, 1000); }, i * 50); } });
+</script>
+</body>
+</html>
